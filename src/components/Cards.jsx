@@ -13,7 +13,7 @@ const Cards = () => {
   
 <div className="container-cards">
 
-<ExitButton />
+{/* <ExitButton /> */}
 
 <h1 className="title">Venus</h1>
 
@@ -25,21 +25,17 @@ const Cards = () => {
 </div>
 
 <p className="presentation">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-Minus, maxime recusandae soluta, at necessitatibus alias officia
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit necessitatibus 
-officia qui voluptatum quos commodi 
-sint omnis ducimus error neque iste itaque reiciendis 
-velit id ut rerum, esse quas fuga.
+Minus, maxime recusandae soluta, at 
 </p>
 
     <div className="moons">
 
       <div className="moon-desc">
-FBEZIQBFIQBGIBZQIBG
+        <p> fufsgb</p>
       </div>
 
       <div className="facts">
-BRHBGEUIQGBEQIGBI
+        <p> fugfsg</p>
       </div>
 
     

@@ -1,17 +1,37 @@
 .container-cards {
-    width: 50vw;
+    width: 30%;
+    height: 50%;
     display: flex;
     flex-direction: column;
-    
+    border: 2px solid rgb(220, 210, 205);    
 }
-.moons {
-    display: flex;
-    justify-content: space-around;
-}
+
 .image-container {
-    width: 5em;
+    height: 20%;
+    width: 20%;
 }
 .planet-image {
     width: 100%;
     object-fit: cover;
+}
+
+.title{
+    height: 20%;
+    font-size: 0.5em;
+}
+.description{
+    height: 20%;
+    font-size: 0.5em;
+}
+
+.presentation{
+    height: 20%;
+    font-size: 0.5em;
+    overflow: auto;
+}
+.moons {
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.5em;
 }
