@@ -34,7 +34,7 @@ velit id ut rerum, esse quas fuga.
 
     <div className="moons">
 
-      <div className="moonDesc">
+      <div className="moon-desc">
 FBEZIQBFIQBGIBZQIBG
       </div>
 
