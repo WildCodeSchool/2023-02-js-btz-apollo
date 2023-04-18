@@ -14,6 +14,8 @@
 --title-size:3em;
 --text-font:'Anuphan', sans-serif;
 --text-size:1em;
+--text-color:rgb(220, 210, 205);
+--bg-color:rgb(20, 20, 20);
 }
 
 .App
@@ -24,6 +26,8 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
+color: var(--text-color);
+background-color: var(--bg-color);
 font-family: var(--title-font);
 font-size: var(--title-size);
 }
