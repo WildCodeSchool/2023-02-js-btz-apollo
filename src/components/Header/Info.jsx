@@ -1,5 +1,5 @@
 import React from 'react';
-import Inflogo from '../../assets/images/icone-info.jpg';
+import Inflogo from '../../assets/images/icone-info.png';
 import './Info.css';
 
 const Info = () => {

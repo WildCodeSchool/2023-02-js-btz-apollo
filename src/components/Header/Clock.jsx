@@ -20,7 +20,7 @@ const Clock = () => {
 
   return (
     <div>
-      mardi {date} {month} {year} {hours} : {minutes} : {seconds}
+      {date} {month} {year} {hours}:{minutes}:{seconds}
     </div>
   );
 };
