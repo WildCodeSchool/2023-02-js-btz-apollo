@@ -1,0 +1,7 @@
+.header-container {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5em;
+}
