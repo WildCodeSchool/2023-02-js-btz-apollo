@@ -1,10 +1,23 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 const Clock = () => {
-  const date = new Date();
-  console.log(date);
+  const [time, setTime] = useState(new Date());
+  console.log(time);
 
-  return <div>Mardi 32 Degrier 14H15</div>;
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+  }, []);
+
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+  const seconds = time.getSeconds();
+
+  return (
+    <div>
+      {hours} : {minutes} : {seconds}
+    </div>
+  );
 };
-
 export default Clock;
