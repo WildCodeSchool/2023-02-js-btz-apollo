@@ -1,9 +1,10 @@
+import Header from './components/Header';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      Bienvenue sur le projet Planetarium !
+    <div className='App'>
+      <Header />
     </div>
   );
 }
