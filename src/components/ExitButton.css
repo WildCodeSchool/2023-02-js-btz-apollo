@@ -2,7 +2,7 @@ button {
     border: none;
     background-color: white;
 }
-.Exit {
+.exit {
     position: absolute;
     right: 32px;
     top: 32px;
@@ -10,10 +10,10 @@ button {
     height: 32px;
     opacity: 0.3;
   }
-  .Exit:hover {
+  .exit:hover {
     opacity: 1;
   }
-  .Exit:before, .Exit:after {
+  .exit:before, .exit:after {
     position: absolute;
     left: 15px;
     content: ' ';
@@ -21,10 +21,10 @@ button {
     width: 2px;
     background-color: #333;
   }
-  .Exit:before {
+  .exit:before {
     transform: rotate(45deg);
   }
-  .Exit:after {
+  .exit:after {
     transform: rotate(-45deg);
   }
  
