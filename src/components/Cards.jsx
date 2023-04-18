@@ -1,7 +1,7 @@
 import React from "react";
 import ExitButton from "./ExitButton";
 import './Cards.css';
-// import img from './src/assets/venus.png'
+import img from '../assets/images/venus.png'
 
 
 
@@ -19,7 +19,10 @@ const Cards = () => {
 
 <h2 className="Description">Planete tellurique</h2>
 
-{/* <img src={img} alt="venus"/> */}
+
+<div className="image-container">
+<img src={img} className="planet-image" alt="venus"/>
+</div>
 
 <p className="Presentation">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
 Minus, maxime recusandae soluta, at necessitatibus alias officia

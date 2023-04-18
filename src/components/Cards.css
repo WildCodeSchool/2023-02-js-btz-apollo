@@ -1,10 +1,17 @@
 .Container-Cards {
+    width: 50vw;
     display: flex;
     flex-direction: column;
     
 }
-
 .Moons {
     display: flex;
     justify-content: space-around;
+}
+.image-container {
+    width: 5em;
+}
+.planet-image {
+    width: 100%;
+    object-fit: cover;
 }
