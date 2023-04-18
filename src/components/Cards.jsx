@@ -11,7 +11,7 @@ const Cards = () => {
   return (
   
   
-<div className="container-Cards">
+<div className="container-cards">
 
 <ExitButton />
 

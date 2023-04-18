@@ -1,10 +1,10 @@
-.container-Cards {
+.container-cards {
     width: 50vw;
     display: flex;
     flex-direction: column;
     
 }
-.coons {
+.moons {
     display: flex;
     justify-content: space-around;
 }
