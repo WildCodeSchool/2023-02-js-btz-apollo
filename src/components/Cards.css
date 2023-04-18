@@ -1,0 +1,10 @@
+.Container-Cards {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.Moons {
+    display: flex;
+    justify-content: space-around;
+}
