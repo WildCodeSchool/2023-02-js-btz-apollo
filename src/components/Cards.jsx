@@ -5,48 +5,48 @@ import img from '../assets/images/venus.png'
 
 
 
+
 const Cards = () => {
 
 
-  return (
-  
-  
-<div className="container-cards">
-
-{/* <ExitButton /> */}
-
-<h1 className="title">Venus</h1>
-
-<ExitButton />
-
-<h2 className="description">Planete tellurique</h2>
-
-
-<div className="image-container">
-<img src={img} className="planet-image" alt="venus"/>
-</div>
-
-<p className="presentation">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-Minus, maxime recusandae soluta, at 
-</p>
-
-    <div className="moons">
-
-      <div className="moon-desc">
-        <p> fufsgb</p>
+  return (<>
+    <div className="cards">
+      <ExitButton/>
+      <div className="container-title">
+        <h1 className="title">Venus</h1>
+        <h2 className="description">Planete tellurique</h2>
       </div>
-
-      <div className="facts">
-        <p> fugfsg</p>
+      <div className="planet-image" >
+        <img src={img} alt="venus" />
       </div>
+      <p className="presentation">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Minus, maxime recusandae soluta, at
+      </p>
+      <div className="moon-container">
+        <div className="moons">
+          <div className="moon-title">
+            <h2> Moon</h2>
+          </div>
+          <div className="moons-desc">
+            <p>blabla</p>
+          </div>
+        </div>
 
-    
+        <div className="facts">
+          <div className="facts-title">
+            <h2> Infos</h2>
+          </div>
+          <div className="facts-description">
+            <p>blabla</p>
+          </div>
+        </div>
+
+        <div className="text-container">
+        </div>
+      </div>
     </div>
-
-
-</div>
-
-
-)};
+  </>
+  )
+};
 
 export default Cards;
