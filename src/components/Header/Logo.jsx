@@ -1,5 +1,5 @@
 import React from 'react';
-import Aplogo from '../assets/images/logo-apollo-blc.png';
+import Aplogo from '../../assets/images/logo-apollo-blc.png';
 import './Logo.css';
 
 const Logo = () => {

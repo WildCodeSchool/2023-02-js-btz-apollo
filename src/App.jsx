@@ -1,6 +1,6 @@
-import Header from './components/Header.jsx';
+import Header from './components/Header/Header';
 import Scene from './pages/Scene.jsx';
-import Footer from './components/Footer.jsx';
+import Navbar from './components/navbar/Navbar';
 import './App.css';
 
 
@@ -15,4 +15,3 @@ function App() {
 }
 
 export default App;
-
