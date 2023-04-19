@@ -1,6 +1,6 @@
 import Header from './components/Header/Header';
 import Scene from './pages/Scene.jsx';
-import Footer from './components/Footer.jsx';
+import Navbar from './components/navbar/Navbar';
 import './App.css';
 import Cards from './components/Cards'
 
@@ -10,10 +10,9 @@ function App() {
       <Header />
       <Scene />
       <Cards />
-      <Footer />
+      <Navbar />
     </div>
   );
 }
 
 export default App;
-
