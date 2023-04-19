@@ -13,9 +13,11 @@ const Cards = () => {
   
 <div className="container-cards">
 
-<ExitButton />
+
 
 <h1 className="title">Venus</h1>
+
+<ExitButton />
 
 <h2 className="description">Planete tellurique</h2>
 
@@ -35,11 +37,13 @@ velit id ut rerum, esse quas fuga.
     <div className="moons">
 
       <div className="moon-desc">
-FBEZIQBFIQBGIBZQIBG
+<p>Lunes associées</p>
+<p>Loremfrbigbaiaeigrbe</p>
       </div>
 
       <div className="facts">
-BRHBGEUIQGBEQIGBI
+<p>Faits associés</p>
+<p>fhrzrgbaebgrbaebgrjaevbuea</p>
       </div>
 
     
