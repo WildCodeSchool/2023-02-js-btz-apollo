@@ -11,11 +11,16 @@ const Cards = () => {
 
   return (<>
     <div className="cards">
-      <ExitButton/>
-      <div className="container-title">
-        <h1 className="title">Venus</h1>
+  
+      <div className="container-title" >
+        <h1 className="title">Venus  <ExitButton /></h1>
+        <div className="exit-button">
+      </div>
         <h2 className="description">Planete tellurique</h2>
       </div>
+
+
+
       <div className="planet-image" >
         <img src={img} alt="venus" />
       </div>
