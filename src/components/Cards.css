@@ -3,6 +3,7 @@
     height: 15rem;
     background-color: rgba(54, 54, 54, 0.555) ;
     border-radius: 8px;
+    transform: translateX(60%);
 }
 
 .container-title {
@@ -11,9 +12,9 @@
     margin: 0 5px 0 5px;
 }
 
-
 .title {
-    justify-content: flex-start;
+    display: flex;
+    justify-content: space-between;
     font-size: 0.8em;
     padding-bottom: 5%;
     padding-top: 5%;
@@ -43,10 +44,12 @@
     padding-top: 5%;
     margin: 0 5px 0 5px;
 }
+
 .moon-container{
     display: flex;
     margin: 0 5px 0 5px;
 }
+
 .moons {
     width: 50%;
     height: 20%;
@@ -78,3 +81,5 @@
 .facts-description {
     font-size: 0.5em;
 }
+
+
