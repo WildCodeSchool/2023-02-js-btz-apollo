@@ -1,12 +1,13 @@
 import React from 'react'
-import './ExitButton.css'
+import Scene from '../pages/Scene'
+import {CgClose} from "react-icons/cg"
 
-function ExitButton() {
-  return (
-    <div>
-        <button className="exit"></button>
-    </div>
-  )
-}
 
-export default ExitButton
+ 
+ const ExitButton = () => {
+   return (
+     <div>ExitButton</div>
+   )
+ }
+ 
+ export default ExitButton

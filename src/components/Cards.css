@@ -1,17 +1,85 @@
-.container-cards {
-    width: 50vw;
+.cards {
+    width: 30%;
+    height: 15rem;
+    background-color: rgba(54, 54, 54, 0.555) ;
+    border-radius: 8px;
+    transform: translateX(60%);
+}
+
+.container-title {
     display: flex;
     flex-direction: column;
-    
+    margin: 0 5px 0 5px;
 }
-.moons {
+
+.title {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    font-size: 0.8em;
+    padding-bottom: 5%;
+    padding-top: 5%;
 }
-.image-container {
-    width: 5em;
+
+.description {
+    font-size: 0.6em;
+    padding-bottom: 10%;
 }
+
 .planet-image {
+    width: 100%;
+    height: 40%;
+    justify-content: center;
+    background-size: cover;
+}
+
+.planet-image>img {
     width: 100%;
     object-fit: cover;
 }
+
+.presentation {
+    height: 27%;
+    font-size: 0.5em;
+    overflow: auto;
+    padding-top: 5%;
+    margin: 0 5px 0 5px;
+}
+
+.moon-container{
+    display: flex;
+    margin: 0 5px 0 5px;
+}
+
+.moons {
+    width: 50%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.moon-title>h2 {
+    font-size: 0.6em;
+}
+
+.moons-desc {
+    font-size: 0.5em;
+}
+
+.facts {
+    width: 50%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.facts-title>h2 {
+    font-size: 0.6em;
+}
+
+.facts-description {
+    font-size: 0.5em;
+}
+
+
