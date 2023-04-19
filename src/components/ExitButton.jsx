@@ -1,6 +1,6 @@
 import React from 'react'
 import Scene from '../pages/Scene'
-import {CgClose} from "react-icons/cg"
+import {CgClose} from "react-icons"
 
 
  
