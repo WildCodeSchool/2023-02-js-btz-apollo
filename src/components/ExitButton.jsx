@@ -1,10 +1,10 @@
 import React from 'react'
-import './ExitButton.css'
+import {CgClose} from "react-icons/cg"
 
 function ExitButton() {
   return (
     <div>
-        <button className="exit"></button>
+        <CgClose />
     </div>
   )
 }
