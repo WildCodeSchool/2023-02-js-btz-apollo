@@ -1,17 +1,28 @@
-import { Link } from "react-router-dom";
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ExitButton from './ExitButton';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './Cards.css';
 
+const Cards = () => {
+  const [planet, setPlanet] = useState({});
 
-const Cards = ({ planet }) => {
+  const params = useParams();
+
+  useEffect(() => {
+    axios
+    .get(`https://apollo-api.martinnoel.fr/solar-system/solar-system/${params.id}`)
+    .then((res) => setPlanet(res.data))
+}, [params.id]);
+
   return (
 
     <div className='cards'>
       <div className='container-title'>
         <h1 className='title'>
-          {planet.englishName}
-          <Link to= '/'><ExitButton /></Link>
+        {planet.englishName}
+        <Link to='/'><ExitButton /></Link>
         </h1>
         <h2 className='description'>{planet.bodyType}</h2>
       </div>

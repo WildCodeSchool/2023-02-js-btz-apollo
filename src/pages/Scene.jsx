@@ -17,12 +17,11 @@ const Scene = () => {
   return (
     <div className='scene'>
       {planet &&
-        planet
-          .filter((element) => element.bodyType === 'Planet')
-          .map((planet) => (
+        planet.filter((element) => element.bodyType === 'Planet').map((planet) => (
             <Cards
               key={planet.id}
               planet={planet}
+              
             />
           ))}
     </div>

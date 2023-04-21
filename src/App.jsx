@@ -13,7 +13,7 @@ function App() {
         <Header />
           <Routes>
             <Route path='/' element={<Scene />} />
-            <Route path='/cards' element={<Cards/>} />
+            <Route path='/:id' element={<Cards/>} />
           </Routes>
         <Navbar />
       </Router>
