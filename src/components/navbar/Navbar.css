@@ -1,13 +1,12 @@
-.navbar
-{
-    width: 100%;
-    display: flex;
+.navbar {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-.image-container{
-   width:3em;
-   height: 80%;
-}
-.image-container > img{
-    width: 100%;
-    object-fit: cover;
+
+#belt {
+  filter: invert(75%);
 }
