@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Cards from '../components/Cards';
 import axios from 'axios';
 import './Scene.css';
@@ -14,16 +15,11 @@ const Scene = () => {
 
   // On a besoin du nom , image ,description ,les lunes associées , (facts)
   return (
-    <div className='scene'>
+    <div className="scene">
       {planet &&
         planet
           .filter((element) => element.bodyType === 'Planet')
-          .map((planet) => (
-            <Cards
-              key={planet.id}
-              planet={planet}
-            />
-          ))}
+          .map((planet) => <Cards key={planet.id} planets={planet} />)}
     </div>
   );
 };
