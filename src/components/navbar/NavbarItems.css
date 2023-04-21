@@ -1,0 +1,9 @@
+.object {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  color: rgb(220, 210, 205);
+}
