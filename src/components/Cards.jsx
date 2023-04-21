@@ -5,34 +5,46 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Cards.css';
 
-const Cards = () => {
+const Cards = ({ planets }) => {
   const [planet, setPlanet] = useState({});
+  const [onload, setOnload] = useState([]);
+
+  const moons = planets.moons;
+
+  console.log(planets);
 
   const params = useParams();
 
-  useEffect(() => {
-    axios
-    .get(`https://apollo-api.martinnoel.fr/solar-system/solar-system/${params.id}`)
-    .then((res) => setPlanet(res.data))
-}, [params.id]);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://apollo-api.martinnoel.fr/solar-system/solar-system/${params.id}`
+  //     )
+  //     .then((res) => setPlanet(res.data));
+  // }, [params.id]);
+
+  if (!moons) {
+    return null;
+  }
 
   return (
-
-    <div className='cards'>
-      <div className='container-title'>
-        <h1 className='title'>
-        {planet.englishName}
-        <Link to='/'><ExitButton /></Link>
+    <div className="cards">
+      <div className="container-title">
+        <h1 className="title">
+          {planets.englishName}
+          <Link to="/">
+            <ExitButton />
+          </Link>
         </h1>
-        <h2 className="description">{planet.bodyType}</h2>
+        <h2 className="description">{planets.bodyType}</h2>
       </div>
 
       <div className="planet-image">
-        <img src={planet.image} alt={planet.englishName} />
+        <img src={planets.image} alt={planets.englishName} />
       </div>
       <div className="bot-card">
-        <p className="presentation">{planet.englishDescription}</p>
-        <h5>{planet.englishName} - Présentation</h5>
+        <p className="presentation">{planets.englishDescription}</p>
+        <h5>{planets.englishName} - Présentation</h5>
         <div className="moon-container">
           <div className="moons">
             <div className="moon-title">
