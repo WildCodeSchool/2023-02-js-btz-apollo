@@ -2,11 +2,10 @@ import { useLoader } from '@react-three/fiber';
 import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 import TurnPlanet from './TurnPlanet';
-
+import { Link } from 'react-router-dom';
+import { OrbitControls } from '@react-three/drei';
 
 import './NavbarItem.css';
 
@@ -26,12 +25,17 @@ const NavbarItem = ({ object }) => {
 
 }
   return (
-    <div className="object">
-      <p>{object.englishName}</p>
-      <Canvas camera={{ fov: 50 }}>
-        <pointLight position={[-5, 0, 5]} intensity={1} />
-        <TurnPlanet model={model} />
-      </Canvas>
+
+    <div className="navbar-item">
+      <div className="object">
+      <Link to={`/${object.id}`}><Canvas camera={{ fov: 40 }}>
+          <pointLight position={[-5, 0, 5]} intensity={1} />
+          <TurnPlanet model={model} />
+        </Canvas></Link>
+      </div>
+      <div className={`planet${name ? '-name' : ''}`}>
+        <p>{object.englishName}</p>
+      </div>
     </div>
   );
 };

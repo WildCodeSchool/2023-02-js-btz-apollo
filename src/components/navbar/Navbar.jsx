@@ -16,8 +16,8 @@ const Navbar = () => {
     <div className="navbar">
       {objects &&
         objects
-          .filter((obj) => obj.bodyType === 'Star' || obj.bodyType === 'Planet')
-          .map((obj) => <NavbarItem key={obj.id} object={obj} />)}
+          .filter((object) => object.bodyType === 'Star' || object.bodyType === 'Planet')
+          .map((object) => <NavbarItem key={object.id} object={object} />)}
     </div>
   );
 };
