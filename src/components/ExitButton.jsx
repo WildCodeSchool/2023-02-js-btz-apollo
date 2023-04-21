@@ -9,7 +9,8 @@ import "./ExitButton.css"
   const [exit, setExit] = useState(false)
 
   useEffect(() => {
-    axios.get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
+    axios
+    .get('./https://apollo-api.martinnoel.fr/solar-system/solar-system')
     .then((res) => setCard(res.data))
 }, []);
 

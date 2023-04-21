@@ -9,21 +9,24 @@ const Scene = () => {
 
   useEffect(() => {
     axios
-      .get("https://apollo-api.martinnoel.fr/solar-system/solar-system")
-      .then((res) =>
-      setPlanet(res.data.bodies))
+      .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
+      .then((res) => setPlanet(res.data.bodies));
   }, []);
 
   // On a besoin du nom , image ,description ,les lunes associées , (facts)
   return (
-    <div className="scene">
+    <div className='scene'>
       {planet &&
-      planet
-      .filter((element)=> (element.bodyType==="Planet"))
-      .map((planet) => (<Cards key={planet.id} planet = {planet}/>
-      ))}
-  </div>
-  )
+        planet
+          .filter((element) => element.bodyType === 'Planet')
+          .map((planet) => (
+            <Cards
+              key={planet.id}
+              planet={planet}
+            />
+          ))}
+    </div>
+  );
 };
 
 export default Scene;
