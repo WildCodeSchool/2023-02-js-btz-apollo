@@ -12,8 +12,32 @@
 .object:hover {
 }
 
-.planet-name {
-  color: rgb(220, 210, 205);
-  z-index: 20;
+.planet {
+  color: rgb(20, 20, 20);
   width: 100%;
+  visibility: hidden;
+}
+
+.planet-name {
+  
+  width: 100%;
+  visibility: hidden;
+  animation: planetName 1s ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes planetName {
+  0% {
+    transform: translateY(-80px);
+    z-index: -1;
+    color: rgba(240, 248, 255, 0);
+  }
+
+  100% {
+    transform: translateY(-140px);
+    visibility: visible;
+    z-index: 20;
+    color: var(--text-color);
+  }
+  
 }
