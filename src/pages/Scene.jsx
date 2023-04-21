@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import Cards from '../components/Cards';
-import axios from 'axios';
-import './Scene.css';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Cards from "../components/Cards";
+import axios from "axios";
+import "./Scene.css"
 
 const Scene = () => {
   const [planet, setPlanet] = useState([]);
@@ -16,12 +17,11 @@ const Scene = () => {
   return (
     <div className='scene'>
       {planet &&
-        planet
-          .filter((element) => element.bodyType === 'Planet')
-          .map((planet) => (
+        planet.filter((element) => element.bodyType === 'Planet').map((planet) => (
             <Cards
               key={planet.id}
               planet={planet}
+              
             />
           ))}
     </div>
