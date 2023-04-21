@@ -6,7 +6,7 @@ import {CgClose} from "react-icons"
  
  const ExitButton = () => {
    return (
-     <div>ExitButton</div>
+     <div>X</div>
    )
  }
  

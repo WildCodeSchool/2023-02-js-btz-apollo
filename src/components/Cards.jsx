@@ -9,13 +9,10 @@ import img from '../assets/images/venus.png'
 const Cards = () => {
 
 
-  return (<>
+  return (
     <div className="cards">
-  
       <div className="container-title" >
         <h1 className="title">Venus  <ExitButton /></h1>
-        <div className="exit-button">
-      </div>
         <h2 className="description">Planete tellurique</h2>
       </div>
 
@@ -33,7 +30,7 @@ const Cards = () => {
             <h2> Moon</h2>
           </div>
           <div className="moons-desc">
-            <p>blabla</p>
+            <p>blabla </p>
           </div>
         </div>
 
@@ -50,7 +47,6 @@ const Cards = () => {
         </div>
       </div>
     </div>
-  </>
   )
 };
 

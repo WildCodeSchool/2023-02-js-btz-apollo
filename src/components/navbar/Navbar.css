@@ -1,5 +1,13 @@
 .navbar
 {
-    height: 20%;
+    width: 100%;
     display: flex;
+}
+.image-container{
+   width:3em;
+   height: 80%;
+}
+.image-container > img{
+    width: 100%;
+    object-fit: cover;
 }
