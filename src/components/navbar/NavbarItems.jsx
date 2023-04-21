@@ -13,9 +13,8 @@ const NavbarItems = ({ object }) => {
   return (
     <div className="object">
       <p>{object.englishName}</p>
-      <Canvas camera={{ fov: 50 }}>
-        <OrbitControls />
-        <pointLight position={[5, 5, 5]} intensity={1} />
+      <Canvas camera={{ fov: 30 }}>
+        <pointLight position={[-5, 0, 5]} intensity={1} />
         <primitive object={model.scene} scale={0.0025} />
       </Canvas>
     </div>
