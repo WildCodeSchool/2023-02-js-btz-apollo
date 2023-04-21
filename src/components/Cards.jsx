@@ -1,21 +1,20 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import ExitButton from "./ExitButton";
-import './Cards.css';
 import img from '../assets/images/venus.png'
 
-
+import './Cards.css';
 
 
 const Cards = () => {
-
+ 
 
   return (
     <div className="cards">
       <div className="container-title" >
-        <h1 className="title">Venus  <ExitButton /></h1>
+        <h1 className="title">Venus 
+        <Link to= '/'><ExitButton /></Link></h1>
         <h2 className="description">Planete tellurique</h2>
       </div>
-
 
 
       <div className="planet-image" >

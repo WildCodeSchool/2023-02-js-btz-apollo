@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Cards from "../components/Cards";
 import axios from "axios";
 import "./Scene.css"
