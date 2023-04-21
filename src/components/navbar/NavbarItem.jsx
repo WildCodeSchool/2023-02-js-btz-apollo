@@ -3,9 +3,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
-import './NavbarItems.css';
+import './NavbarItem.css';
 
-const NavbarItems = ({ object }) => {
+const NavbarItem = ({ object }) => {
   const { model3d } = object;
 
   const model = useLoader(GLTFLoader, model3d);
@@ -25,4 +25,4 @@ const NavbarItems = ({ object }) => {
   );
 };
 
-export default NavbarItems;
+export default NavbarItem;

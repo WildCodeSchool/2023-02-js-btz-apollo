@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import NavbarItems from './NavbarItems';
+import NavbarItem from './NavbarItem';
 import './Navbar.css';
 import axios from 'axios';
 
@@ -16,13 +16,8 @@ const Navbar = () => {
     <div className="navbar">
       {objects &&
         objects
-          .filter((obj) => obj.bodyType === 'Star')
-          .map((obj) => <NavbarItems key={obj.id} object={obj} />)}
-
-      {objects &&
-        objects
-          .filter((obj) => obj.bodyType === 'Planet')
-          .map((obj) => <NavbarItems key={obj.id} object={obj} />)}
+          .filter((obj) => obj.bodyType === 'Star' || obj.bodyType === 'Planet')
+          .map((obj) => <NavbarItem key={obj.id} object={obj} />)}
     </div>
   );
 };
