@@ -2,9 +2,11 @@ import { useLoader } from '@react-three/fiber';
 import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import TurnPlanet from './TurnPlanet';
+
 
 import './NavbarItem.css';
 
@@ -12,7 +14,17 @@ const NavbarItem = ({ object }) => {
   const { model3d } = object;
 
   const model = useLoader(GLTFLoader, model3d);
+  const [name, setName] = useState();
+  
+  const handleMouseIn = () =>{
+      setName(!name);
 
+  }
+
+  const handleMouseOut = () =>{
+    setName(!name);
+
+}
   return (
     <div className="object">
       <p>{object.englishName}</p>
