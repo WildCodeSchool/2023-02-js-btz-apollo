@@ -1,10 +1,8 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Canvas, useLoader} from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import TurnPlanet from './TurnPlanet';
-
-
 import './NavbarItem.css';
 
 const NavbarItem = ({ object }) => {
