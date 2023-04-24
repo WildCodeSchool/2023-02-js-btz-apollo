@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import ExitButton from './ExitButton';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './Cards.css';
 
 const Cards = ({ planets }) => {

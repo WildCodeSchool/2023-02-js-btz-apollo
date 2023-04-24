@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import NavbarItem from './NavbarItem';
 import './Navbar.css';
-import axios from 'axios';
 
 const Navbar = () => {
   const [objects, setObjects] = useState([]);

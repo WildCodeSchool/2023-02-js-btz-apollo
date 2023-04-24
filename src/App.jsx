@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
-import Scene from './pages/Scene.jsx';
+import Scene from './pages/Scene';
 import Navbar from './components/navbar/Navbar';
-import './App.css';
 import Cards from './components/Cards';
-
+import './App.css';
 
 function App() {
   return (

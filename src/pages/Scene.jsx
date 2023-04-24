@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Cards from '../components/Cards';
 import axios from 'axios';
+import Cards from '../components/Cards';
 import './Scene.css';
 
 const Scene = () => {

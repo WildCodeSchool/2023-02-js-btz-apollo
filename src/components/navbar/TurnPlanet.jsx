@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 
 const TurnPlanet = ({ model }) => {
   const modelRef = useRef();

@@ -1,11 +1,9 @@
-import { useLoader } from '@react-three/fiber';
-import React, { useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { Canvas, useFrame } from '@react-three/fiber';
-import TurnPlanet from './TurnPlanet';
+import  { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { OrbitControls } from '@react-three/drei';
+import { Canvas, useLoader} from '@react-three/fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import TurnPlanet from './TurnPlanet';
+
 
 import './NavbarItem.css';
 
