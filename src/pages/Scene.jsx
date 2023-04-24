@@ -1,25 +1,23 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Cards from '../components/Cards';
 import axios from 'axios';
+import Card from '../components/Card/Card';
 import './Scene.css';
 
 const Scene = () => {
-  const [planet, setPlanet] = useState([]);
+  const [scenePlanet, setScenePlanet] = useState([]);
 
   useEffect(() => {
     axios
       .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
-      .then((res) => setPlanet(res.data.bodies));
+      .then((res) => setScenePlanet(res.data.bodies));
   }, []);
 
-  // On a besoin du nom , image ,description ,les lunes associées , (facts)
   return (
     <div className="scene">
-      {planet &&
-        planet
-          .filter((element) => element.bodyType === 'Planet')
-          .map((planet) => <Cards key={planet.id} planets={planet} />)}
+      {scenePlanet &&
+        scenePlanet
+          .filter((object) => object.bodyType === 'Planet')
+          .map((planet) => <Card key={planet.id} scenePlanet={planet} />)}
     </div>
   );
 };
