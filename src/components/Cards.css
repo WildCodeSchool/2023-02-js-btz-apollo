@@ -1,0 +1,79 @@
+.cards {
+    width: 20%;
+    background-color: rgba(54, 54, 54, 0.185);
+    border-radius: 8px;
+    margin: 0.5em;
+    position: relative;
+}
+
+.container-title {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px 0 5px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.description {
+    font-size: 1em;
+    padding-bottom: 10%;
+}
+
+.planet-image {
+    width: 100%;
+}
+
+.planet-image>img {
+    width: 100%;
+    object-fit: cover;
+}
+
+h5 {
+    text-align: center;
+    margin: 1.5em;
+}
+
+.bot-card {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+.moon-container {
+    width: 100%;
+    min-height: 2.5em;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 3%;
+}
+
+.moons {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+.moon-title>h2 {
+    font-size: 1em;
+}
+
+.moons-desc {
+    font-size: 0.7em;
+}
+
+.presentation {
+    width: 100%;
+    font-size: 0.7em;
+    margin: 2px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma;
+}
