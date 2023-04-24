@@ -4,11 +4,6 @@ const Card = ( {scenePlanet} ) => {
     
 const moons = scenePlanet.moons;
 
-//renvoyer null si pas de lune
-  if (!moons) {
-    return null;
-  }
-
     return (
         <div className="cards">
             <div className="container-title">
@@ -28,13 +23,17 @@ const moons = scenePlanet.moons;
                         <div className="moon-title">
                             <h2>Moons</h2>
                         </div>
-                        <ul>
-                            {moons.map((moon) => 
+                        {moons &&
+                            <ul>
+                            {
+                            moons.map((moon) => 
                             (
                                 <li key={moon.moon}>{moon.moon}</li>
                             )
                             )}
                         </ul>
+                        }
+                        
                     </div>
                 </div>
             </div>
