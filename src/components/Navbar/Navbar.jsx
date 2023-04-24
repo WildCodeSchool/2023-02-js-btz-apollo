@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import NavbarItem from './NavbarItem';
+import NavbarItem from './Navbaritem/NavbarItem';
 import './Navbar.css';
 
 const Navbar = () => {

@@ -1,4 +1,4 @@
-import Inflogo from '../../assets/images/icone-info.png';
+import Inflogo from '../../../assets/images/icone-info.png';
 import './Info.css';
 
 const Info = () => {

@@ -1,6 +1,6 @@
-import Info from './Info';
+import Logo from './Logo/Logo';
 import Clock from './Clock';
-import Logo from './Logo';
+import Info from './Info/Info'
 import './Header.css';
 
 const Header = () => {
