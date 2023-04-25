@@ -16,12 +16,12 @@ const moons = scenePlanet.moons;
                 <img src={scenePlanet.image} alt={scenePlanet.englishName} />
             </div>
             <div className="bot-card">
-                <p className="presentation">{scenePlanet.englishDescription}</p>
                 <h5>{scenePlanet.englishName} - Présentation</h5>
+                <p className="presentation">{scenePlanet.englishDescription}</p>
                 <div className="moon-container">
                     <div className="moons">
                         <div className="moon-title">
-                            <h2>Moons</h2>
+                            {moons ? <h2>Moons</h2> : null}
                         </div>
                         {moons &&
                             <ul>
