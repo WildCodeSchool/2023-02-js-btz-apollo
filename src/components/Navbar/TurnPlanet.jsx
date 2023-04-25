@@ -13,17 +13,16 @@ const TurnPlanet = ({ model }) => {
   
   return (
     <>
-        <primitive
-            ref={modelRef} object={model.scene} scale={0.002}
-
-            onPointerOver={() => {
-                setHover(true);
-             }}
-             
-            onPointerOut={() => {
-                setHover(false);
-            }}
-        />
+            <primitive
+                ref={modelRef} object={model.scene} scale={0.002}
+                onPointerOver={() => {
+                    setHover(true);
+                 }}
+    
+                onPointerOut={() => {
+                    setHover(false);
+                }}
+            />
     </>
   );
 };
