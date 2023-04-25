@@ -1,6 +1,12 @@
-.scene{
+.scene, .canvas{
+height: 100%;
 width: 100%;
 display: flex;
-flex-wrap: wrap;
-justify-content: center;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.canvas {
+
+    position: absolute;
 }

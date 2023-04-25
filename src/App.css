@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 :root {
@@ -17,11 +17,17 @@
     --bg-color: rgb(20, 20, 20);
 }
 
-body {
+html,
+body,
+#root {
     font-size: 16px;
-    min-height: 100vh;
-    min-width: 100vw;
+    height: 100vh;
+    width: 100vw;
     color: var(--text-color);
     background-color: var(--bg-color);
     font-family: var(--title-font);
+}
+
+.app {
+    height: 100%;
 }
