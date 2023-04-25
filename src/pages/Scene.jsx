@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Canvas } from '@react-three/fiber'
 import { Stars, OrbitControls } from '@react-three/drei'
 import Header from '../components/Header/Header'
@@ -5,6 +7,15 @@ import Navbar from '../components/Navbar/Navbar'
 import './Scene.css'
 
 const Scene = () => {
+
+    const [object, setObject] = useState([]);
+
+    useEffect(() => {
+    axios
+        .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
+        .then((res) => setObject(res.data.bodies));
+    }, []);
+
   return (
     <div className='scene'>
         <Header />
