@@ -1,25 +1,16 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Card from '../components/Card/Card';
-import './Scene.css';
+import React from 'react'
+import CardList from '../components/CardList/CardList'
+import Header from '../components/Header/Header'
+import Navbar from '../components/Navbar/Navbar'
 
 const Scene = () => {
-  const [scenePlanet, setScenePlanet] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
-      .then((res) => setScenePlanet(res.data.bodies));
-  }, []);
-
   return (
-    <div className="scene">
-      {scenePlanet &&
-        scenePlanet
-          .filter((object) => object.bodyType === 'Planet')
-          .map((planet) => <Card key={planet.id} scenePlanet={planet} />)}
-    </div>
-  );
-};
+    <>
+        <Header />
+        <CardList />
+        <Navbar />
+    </>
+  )
+}
 
-export default Scene;
+export default Scene
