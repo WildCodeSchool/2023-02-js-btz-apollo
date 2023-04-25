@@ -29,7 +29,7 @@
     width: 100%;
 }
 
-.planet-image>img {
+.planet-image > img {
     width: 100%;
     object-fit: cover;
 }
