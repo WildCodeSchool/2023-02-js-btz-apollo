@@ -32,9 +32,9 @@ const Scene = () => {
                         far: 999999999999
                     }}
                 >
-                    <Stars radius={500} depth={50} count={30000} factor={20} saturation={1} fade speed={0} />
+                    <Stars radius={500} depth={50} count={5000} factor={20} saturation={1} fade speed={0} />
                     <OrbitControls makeDefault />
-                    <pointLight />
+                    <pointLight intensity={0.5} />
                     {objects &&
                         objects
                         .filter((object) => object.bodyType === 'Star')
