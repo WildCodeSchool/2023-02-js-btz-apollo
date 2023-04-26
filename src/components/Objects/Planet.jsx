@@ -50,9 +50,9 @@ useFrame((state, delta)=>{
             </group>
 
             <Torus
-                args={[aphelion,0.005,30,200]}
+                args={[aphelion,0.01,30,200]}
                 rotation={[- Math.PI / 2, 0, 0]}
-                material-color="hotpink"
+                material-color="lightgrey"
             />
 
         </>
