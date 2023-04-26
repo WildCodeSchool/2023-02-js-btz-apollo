@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Clone, useGLTF } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import TurnPlanet from '../TurnPlanet';
 import './NavbarItem.css';
 

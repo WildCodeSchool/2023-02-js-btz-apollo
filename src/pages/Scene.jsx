@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { Canvas} from '@react-three/fiber'
-import { Stars, OrbitControls, OrthographicCamera } from '@react-three/drei'
+import { Stars, OrbitControls } from '@react-three/drei'
+import axios from 'axios'
 import Header from '../components/Header/Header'
 import Navbar from '../components/Navbar/Navbar'
 import Sun from '../components/Objects/Sun'
 import Planet from '../components/Objects/Planet'
 import './Scene.css'
-import { PointLight } from 'three'
 
 const Scene = () => {
 
@@ -33,7 +32,7 @@ const Scene = () => {
                         far: 999999999999999
                     }}
                 >
-                    <Stars radius={400} depth={50} count={1500} factor={4} saturation={0} fade speed={0} />
+                    <Stars radius={10000} depth={50} count={30000} factor={7} saturation={3} fade speed={0} />
                     <OrbitControls makeDefault />
                     <pointLight />
                     {objects &&
