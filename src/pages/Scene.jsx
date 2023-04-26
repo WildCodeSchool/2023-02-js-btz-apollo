@@ -26,13 +26,13 @@ const Scene = () => {
             <div className="canvas">
                 <Canvas
                     camera={{
-                        position: [-4000,2000,4000],
+                        position: [0,20,40],
                         fov: 45,
                         near: 0.1,
-                        far: 999999999999999
+                        far: 999999999999
                     }}
                 >
-                    <Stars radius={10000} depth={50} count={30000} factor={7} saturation={3} fade speed={0} />
+                    <Stars radius={500} depth={50} count={30000} factor={20} saturation={1} fade speed={0} />
                     <OrbitControls makeDefault />
                     <pointLight />
                     {objects &&
