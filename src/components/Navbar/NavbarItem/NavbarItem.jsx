@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Canvas, useLoader} from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { Canvas } from '@react-three/fiber';
+import { useGLTF } from '@react-three/drei';
 import TurnPlanet from '../TurnPlanet';
 import './NavbarItem.css';
 
 const NavbarItem = ({ navPlanet }) => {
 
     const { model3d } = navPlanet;
-    const model = useLoader(GLTFLoader, model3d);
+    const model = useGLTF(model3d);
     const [name, setName] = useState();
 
     const handleMouseIn = () => {
