@@ -17,7 +17,7 @@ const Scene = () => {
         .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
         .then((res) => {
           setObjects(res.data.bodies);
-          setIsLoading(true);
+          setIsLoading(false);
         });
     }, []);
     
