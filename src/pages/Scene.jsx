@@ -54,12 +54,11 @@ const Scene = () => {
               <pointLight intensity={0.5} />
               {objects &&
                 objects
-                  .filter((object) => object.bodyType === 'Star')
-                  .map((star) => <Sun key={star.id} sun={star} />)}
-              {objects &&
-                objects
-                  .filter((object) => object.bodyType === 'Planet')
-                  .map((planet) => <Planet key={planet.id} planet={planet} />)}
+                  .map((astre) => {
+                     if (astre.bodyType === 'Star') return <Sun key={astre.id} sun={astre} />
+                     if (astre.bodyType === 'Planet') return <Planet key={astre.id} planet={astre} /> 
+                     return null
+                  })}
             </Canvas>
             <Navbar />
             </>
