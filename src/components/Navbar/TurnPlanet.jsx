@@ -6,8 +6,7 @@ const TurnPlanet = ({ model }) => {
     const [hover, setHover] = useState(false);
 
     useFrame(() => {
-        if (hover) {
-            modelRef.current.rotation.y += 0.02;
+        {hover ? modelRef.current.rotation.y += 0.02 : null;
         }
     });
   
