@@ -7,8 +7,6 @@ let {meanRadius} = sun
 
 meanRadius /= 100000000
 
-console.log(sunModel);
-
   return (
         <Clone
             object={sunModel.scene} 

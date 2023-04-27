@@ -1,4 +1,4 @@
-import { Clone, Torus, useGLTF } from '@react-three/drei';
+import { Clone, Torus, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 
@@ -19,7 +19,6 @@ const Planet = ({planet}) => {
     aphelion /= 10000000;
 
     sideralRotation /= 1000000; //in hours in API => to convert
-    // sideralOrbit /= 10000000; //in days in API => to convert
     
     //conversion des angles de degres (API) vers radians (ThreeJS)
     const radianAxialTilt = (axialTilt * Math.PI) / 180
