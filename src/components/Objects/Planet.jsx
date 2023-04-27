@@ -1,4 +1,4 @@
-import { Clone, Torus, useGLTF } from '@react-three/drei'
+import { Clone, Torus, useGLTF, Center } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
@@ -38,9 +38,9 @@ const Planet = ({planet}) => {
 
 useFrame((state, delta)=>{
         
-        planetRef.current.rotation.y += sideralRotation;
-        torusRef.current.rotation.z += (earthOrbit / sideralOrbit) / 1000;
-        groupRef.current.rotation.y += (earthOrbit / sideralOrbit) / 1000;
+        planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
+        torusRef.current.rotation.z += (earthOrbit / sideralOrbit) / 1000; //rotation de la ligne d'orbite autour du soleil
+        groupRef.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
 
     })
 
@@ -80,7 +80,9 @@ useFrame((state, delta)=>{
                 {moons &&
                 moons.filter((object) => object.bodyType === 'Moon' && object.aroundPlanet.planet === planet.id)
                 .map((moon)=>(
-                <Moon key={moon.id} moon = {moon} planetAph = {planet.aphelion}/>
+                    <Center key={moon.id}  position={[aphelion, 0 ,0]}>
+                        <Moon moon = {moon} planet={planet} />
+                    </Center>
                 ))} 
 
         </>

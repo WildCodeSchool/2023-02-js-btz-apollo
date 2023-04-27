@@ -1,32 +1,37 @@
-import { Clone, useGLTF } from '@react-three/drei'
+import { useGLTF, Clone } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import { useRef, useState, useEffect } from 'react';
-import axios from 'axios';
 
-const Moon = ({moon}) => {
+const Moon = ({moon, planet}) => {
 
-    let {sideralRotation, axialTilt, sideralOrbit, model3d } = moon;
-    const moonModel = useGLTF(model3d); 
+    console.log(planet.sideralOrbit);
 
-    moon.meanRadius /= 10000000;
-    moon.aphelion /= 10000000;
+    const earthOrbit = 365.256;
 
-    // planet.aphelion /= 10000000
+    const {model3d } = moon;
+    const moonModel = useGLTF(model3d);
+    const moonGroupRef = useRef();
 
-    // sideralRotation /= 1000000; //in hours in API => to convert
-     
+    moon.aphelion /= 10000;
+    moon.meanRadius /= 1000000;
+
+    useFrame((state, delta)=>{
+        
+        moonGroupRef.current.rotation.y += (earthOrbit / 15) / 1000; //rotation de la lune autour de sa planete
+
+    })
+
     return (
         <>
-                <group >
+                <group ref={moonGroupRef}>
                     <mesh>
                         <sphereGeometry />
                     </mesh>
 
-                    <primitive
-                        object={moonModel.scene}
-                        scale={ moon.meanRadius}
-                        position={ [0,0 ,0] }
-                        rotation={[0, 0 ,0]}
+                    <Clone
+                        object={moonModel.scene }
+                        scale={ moon.meanRadius * 10}
+                        position={[moon.aphelion,0,0]}
                     // onClick={orbitColor}
                     />
                 </group>
