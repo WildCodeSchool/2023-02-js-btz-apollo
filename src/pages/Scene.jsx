@@ -39,7 +39,7 @@ const Scene = () => {
                         objects
                         .filter((object) => object.bodyType === 'Star')
                         .map((star) => <Sun key = {star.id} sun = {star} />)}
-
+                        
                     {objects &&
                         objects
                         .filter((object) => object.bodyType === 'Planet')

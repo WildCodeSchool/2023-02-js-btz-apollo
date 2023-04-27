@@ -1,6 +1,9 @@
 import { Clone, Torus, useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
-import { useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef, useState, useEffect } from 'react';
+import axios from 'axios';
+import Moon from './Moon';
+
 
 const Planet = ({planet}) => {
 
@@ -41,7 +44,13 @@ useFrame((state, delta)=>{
 
     })
 
+    const [moons, setMoons] = useState([]);
 
+    useEffect(() => {
+    axios
+        .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
+        .then((res) => setMoons(res.data.bodies));
+    }, []);
 
 
   return (
@@ -67,6 +76,12 @@ useFrame((state, delta)=>{
                 rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
                 material-color = {color}
             />
+
+                {moons &&
+                moons.filter((object) => object.bodyType === 'Moon' && object.aroundPlanet.planet === planet.id)
+                .map((moon)=>(
+                <Moon key={moon.id} moon = {moon} planetAph = {planet.aphelion}/>
+                ))} 
 
         </>
   )
