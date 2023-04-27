@@ -26,7 +26,7 @@ const Scene = () => {
         <div className="canvas">
           {isLoading ? (
             <div className='loading'>Chargement...</div>
-          ) : (
+          ) : (<>
             <Canvas
               camera={{
                 position: [0, 20, 40],
@@ -55,9 +55,10 @@ const Scene = () => {
                   .filter((object) => object.bodyType === 'Planet')
                   .map((planet) => <Planet key={planet.id} planet={planet} />)}
             </Canvas>
+            <Navbar />
+            </>
           )}
         </div>
-        <Navbar />
       </div>
     );
   };
