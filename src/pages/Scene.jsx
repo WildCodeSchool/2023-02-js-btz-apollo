@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Canvas} from '@react-three/fiber'
 import { Stars, OrbitControls } from '@react-three/drei'
+import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios'
 import Header from '../components/Header/Header'
 import Navbar from '../components/Navbar/Navbar'
@@ -16,7 +17,7 @@ const Scene = () => {
         .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
         .then((res) => {
           setObjects(res.data.bodies);
-          setIsLoading(false);
+          setIsLoading(true);
         });
     }, []);
     
@@ -25,7 +26,12 @@ const Scene = () => {
           <Header />
         <div className="canvas">
           {isLoading ? (
-            <div className='loading'>Chargement...</div>
+            <div className='loading'>
+            <img className='capybara' src="https://i.redd.it/capy-is-king-v0-ian6ahoqhqna1.png?s=5639c3866298be9ecffdfe3c8f34f9f8371e885e" alt="capybara" />
+            <span>Loading</span> 
+            <SpinnerDotted color="#424463" />
+            </div>
+            
           ) : (<>
             <Canvas
               camera={{
