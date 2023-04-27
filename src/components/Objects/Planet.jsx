@@ -1,5 +1,5 @@
 import { Clone, Torus, useGLTF, Center } from '@react-three/drei'
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import Moon from './Moon';
@@ -7,28 +7,32 @@ import Moon from './Moon';
 
 const Planet = ({planet}) => {
 
-    let color = 'white';
+    let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
+    
+    sideralRotation /= 1000000; //in hours in API => to convert
+    meanRadius /= 10000000;
+    aphelion /= 10000000;
+    
+    const planetModel = useGLTF(planet.model3d);
     const earthOrbit = 365.256;
+    const [moons, setMoons] = useState([]);
     const planetRef = useRef()
     const groupRef = useRef()
     const torusRef = useRef()
     
-    const planetModel = useGLTF(planet.model3d);
-    let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet
+    let color = 'white';
 
-    {planet.name == 'Pluton' ? meanRadius = 100000 : meanRadius}
-    
-    meanRadius /= 10000000;
-    aphelion /= 10000000;
-
-    sideralRotation /= 1000000; //in hours in API => to convert
-    
     //conversion des angles de degres (API) vers radians (ThreeJS)
     const radianAxialTilt = (axialTilt * Math.PI) / 180
 
+    useEffect(() => {
+    axios
+        .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
+        .then((res) => setMoons(res.data.bodies));
+    }, []);
+
     const [click, setClick] = useState(false)
   
-
     const orbitColor = ()=> (
         setClick(!click)
     )
@@ -39,27 +43,15 @@ const Planet = ({planet}) => {
 useFrame((state, delta)=>{
         
         planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
-        torusRef.current.rotation.z += (earthOrbit / sideralOrbit) / 1000; //rotation de la ligne d'orbite autour du soleil
         groupRef.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
 
     })
 
-    const [moons, setMoons] = useState([]);
-
-    useEffect(() => {
-    axios
-        .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
-        .then((res) => setMoons(res.data.bodies));
-    }, []);
-
-
-  return (
+    return (
 
         <>
             <group ref={groupRef}>
-                <mesh>
-                    <sphereGeometry />
-                </mesh>
+                <mesh/>
                 <Clone
                    ref={planetRef}
                    object={ planetModel.scene }
@@ -68,25 +60,26 @@ useFrame((state, delta)=>{
                    rotation={[0, 0 ,-radianAxialTilt]}
                    onClick={orbitColor}
                 />
-            </group>
-
-            <Torus
-                ref={torusRef}
-                args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
-                rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
-                material-color = {color}
-            />
+            
+                <Torus
+                    ref={torusRef}
+                    args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
+                    rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
+                    material-color = {color}
+                />
 
                 {moons &&
-                moons.filter((object) => object.bodyType === 'Moon' && object.aroundPlanet.planet === planet.id)
-                .map((moon)=>(
-                    <Center key={moon.id}  position={[aphelion, 0 ,0]}>
-                        <Moon moon = {moon} planet={planet} />
-                    </Center>
-                ))} 
-
+                moons
+                    .filter((object) => object.bodyType === 'Moon' && object.aroundPlanet.planet === planet.id)
+                    .map((moon)=>(
+                        <Center key={moon.id}  position={[aphelion, 0 ,0]}>
+                            <Moon moon = {moon} />
+                        </Center>
+                    ))
+                } 
+            </group>
         </>
-  )
+    )
 }
 
 export default Planet
