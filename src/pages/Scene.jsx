@@ -19,6 +19,7 @@ const Scene = () => {
           setIsLoading(false);
         });
     }, []);
+    
     return (
         <div className='scene'>
           <Header />
