@@ -12,14 +12,17 @@ import './Scene.css'
 const Scene = () => {
     const [objects, setObjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
-      axios
-        .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
-        .then((res) => {
-          setObjects(res.data.bodies);
-          setIsLoading(false);
-        });
-    }, []);
+      setTimeout(()=>{
+        axios
+          .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
+          .then((res) => {
+            setObjects(res.data.bodies);
+            setIsLoading(false);
+          });
+        },6000);
+      }, []);
     
     return (
         <div className='scene'>
