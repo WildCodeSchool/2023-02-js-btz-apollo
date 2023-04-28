@@ -1,25 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Scene from './pages/Scene.jsx';
-import Navbar from './components/navbar/Navbar';
+import Scene from './pages/Scene';
 import './App.css';
-import Cards from './components/Cards';
 
 
-function App() {
-  return (
-    <div className='app'>
-      <Router>
-        <Header />
-          <Routes>
-            <Route path='/' element={<Scene />} />
-            <Route path='/:id' element={<Cards/>} />
-          </Routes>
-        <Navbar />
-      </Router>
-
-    </div>
-  );
+function App() {    
+    return (
+        <div className='app'>
+        <Scene />
+        </div>
+    );
 }
 
 export default App;

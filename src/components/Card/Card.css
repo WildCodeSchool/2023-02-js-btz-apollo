@@ -29,7 +29,7 @@
     width: 100%;
 }
 
-.planet-image>img {
+.planet-image > img {
     width: 100%;
     object-fit: cover;
 }
@@ -41,7 +41,7 @@ h5 {
 
 .bot-card {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 
