@@ -63,10 +63,10 @@ const Scene = () => {
                      return null
                   })}
             </Canvas>
-            <Navbar />
             </>
           )}
         </div>
+        <Navbar />
       </div>
     );
   };
