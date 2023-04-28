@@ -1,10 +1,11 @@
 import Scene from './pages/Scene';
 import './App.css';
 
-function App() {
+
+function App() {    
     return (
         <div className='app'>
-                <Scene />
+        <Scene />
         </div>
     );
 }

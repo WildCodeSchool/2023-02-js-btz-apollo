@@ -1,4 +1,4 @@
-.scene, .canvas{
+.scene, .canvas {
 height: 100%;
 width: 100%;
 display: flex;
@@ -6,8 +6,39 @@ flex-direction: column;
 justify-content: space-between;
 }
 
+.loading {
+    width: 100vw;
+    height: 100vh;
+    background: #24242B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--title-size);
+    color: #60627d;
+}
+
+.loading > span {
+    margin-right: 1em;
+}
+
 .canvas {
 
     position: absolute;
     
+}
+.capybara {
+    width: 4em;
+    bottom: -600px;
+    left: 35%;
+    animation: fly 5s  infinite;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(400px,400px)
+    }
+
+    100% {
+        transform: translate(-500px,-500px)rotate(360deg)
+    }
 }
