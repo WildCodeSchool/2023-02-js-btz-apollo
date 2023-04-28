@@ -1,15 +1,11 @@
 .navbar-item {
   width: 10%;
   position: relative;
-  z-index: 10;
   text-align: center;
 }
 
 .object {
   width: 100%;
-}
-
-.object:hover {
 }
 
 .planet {
@@ -29,14 +25,12 @@
 @keyframes planetName {
   0% {
     transform: translateY(-80px);
-    z-index: -1;
     color: rgba(240, 248, 255, 0);
   }
 
   100% {
     transform: translateY(-140px);
     visibility: visible;
-    z-index: 20;
     color: var(--text-color);
   }
   

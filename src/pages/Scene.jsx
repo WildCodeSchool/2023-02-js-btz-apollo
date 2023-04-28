@@ -38,7 +38,7 @@ const Scene = () => {
           ) : (<>
             <Canvas
               camera={{
-                position: [0, 20, 40],
+                position: [0, 75, 0],
                 fov: 45,
                 near: 0.1,
                 far: 999999999999
@@ -63,10 +63,10 @@ const Scene = () => {
                      return null
                   })}
             </Canvas>
-            <Navbar />
             </>
           )}
         </div>
+        <Navbar />
       </div>
     );
   };

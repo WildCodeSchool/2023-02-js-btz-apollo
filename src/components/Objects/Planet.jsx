@@ -17,7 +17,7 @@ const Planet = ({planet}) => {
     const earthOrbit = 365.256;
     const [moons, setMoons] = useState([]);
     const planetRef = useRef()
-    const groupRef = useRef()
+    const turnArroundSun = useRef()
     const torusRef = useRef()
     
     let color = 'white';
@@ -42,25 +42,24 @@ const Planet = ({planet}) => {
 
 useFrame((state, delta)=>{
         
-        planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
-        groupRef.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
+        // planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
+         turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
 
     })
 
     return (
 
         <>
-            <group ref={groupRef}>
-                <mesh/>
-                <Clone
-                   ref={planetRef}
-                   object={ planetModel.scene }
-                   scale={ meanRadius }
-                   position={ [aphelion,0 ,0] }
-                   rotation={[0, 0 ,-radianAxialTilt]}
-                   onClick={orbitColor}
-                />
-            
+                <mesh ref={turnArroundSun}>
+                    <Clone
+                        ref={planetRef}
+                        object={ planetModel.scene }
+                        scale={ meanRadius }
+                        position={ [aphelion,0 ,0] }
+                        rotation={[0, 0 ,-radianAxialTilt]}
+                        onClick={orbitColor}
+                    />
+                
                 <Torus
                     ref={torusRef}
                     args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
@@ -68,16 +67,19 @@ useFrame((state, delta)=>{
                     material-color = {color}
                 />
 
+
                 {moons &&
                 moons
-                    .filter((object) => object.bodyType === 'Moon' && object.aroundPlanet.planet === planet.id)
-                    .map((moon)=>(
-                        <Center key={moon.id}  position={[aphelion, 0 ,0]}>
-                            <Moon moon = {moon} />
-                        </Center>
+                .filter((object) => object.bodyType === 'Moon' && object.aroundPlanet.planet === planet.id)
+                .map((moon)=>(
+                    <Center key={moon.id}  position={[aphelion + moon.aphelion /150000, 0 ,0]}>
+                        <Moon moon = {moon} />
+                    </Center>
                     ))
                 } 
-            </group>
+
+
+                </mesh>
         </>
     )
 }
