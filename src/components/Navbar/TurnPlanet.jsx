@@ -13,7 +13,7 @@ const TurnPlanet = ({ model }) => {
   return (
     <>
             <primitive
-                ref={modelRef} object={model.scene} scale={0.002}
+                ref={modelRef} object={model.scene} scale={0.0015}
                 onPointerOver={() => {
                     setHover(true);
                  }}
