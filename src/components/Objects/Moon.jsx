@@ -1,38 +1,31 @@
-import { useGLTF, Clone } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
+import { useGLTF} from '@react-three/drei'
 import { useRef } from 'react';
 
 const Moon = ({moon}) => {
+
     
-    let { model3d, aphelion, meanRadius, sideralOrbit } = moon; //let because we modify some value for scale
-
-    aphelion /= 150000;
-    meanRadius /= 10000000;
-
-    const earthOrbit = 365.256;
+    let { model3d, aphelion, meanRadius } = moon; //let because we modify some value for scale
+    
     const moonModel = useGLTF(model3d);
-    const moonGroupRef = useRef();
+    const turnArroundPlanet = useRef();
     const moonRef = useRef();
 
-    useFrame((state, delta)=>{
-        
-        moonGroupRef.current.rotation.y += (earthOrbit / sideralOrbit) / 1000
-
-    })
+    aphelion /= 150000;
+    meanRadius /= 7000000;
 
     return (
-        <>
-                <group ref={moonGroupRef}> 
-                    <mesh/>
-                    <Clone
-                        ref = {moonRef}
-                        object={moonModel.scene }
-                        scale={ meanRadius }
-                        position={[aphelion,0,0]}
-                    />
-                </group>
 
-            </>
+    <>
+        <mesh ref={turnArroundPlanet}>
+            <primitive
+                ref = { moonRef }
+                object={ moonModel.scene }
+                scale={ meanRadius }
+                position={ [0,0,0] }
+            />
+        </mesh>
+    </>
+
   )
 }
 
