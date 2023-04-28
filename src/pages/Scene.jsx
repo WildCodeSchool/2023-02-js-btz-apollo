@@ -12,18 +12,35 @@ import './Scene.css'
 const Scene = () => {
     const [objects, setObjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [moons, setMoons] = useState({})
 
     useEffect(() => {
       setTimeout(()=>{
         axios
           .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
           .then((res) => {
+
+            const moonsMap = {}
+              
+              res.data.bodies.forEach(element => {
+
+                if(element.bodyType !== 'Moon' ) {
+                    return
+                }
+
+               if(!moonsMap[element.aroundPlanet.planet]){
+                moonsMap[element.aroundPlanet.planet]=[]
+               }
+
+               moonsMap[element.aroundPlanet.planet].push(element)
+              });
             setObjects(res.data.bodies);
+            setMoons(moonsMap);
             setIsLoading(false);
           });
-        },6000);
+        },1000);
       }, []);
-    
+
     return (
         <div className='scene'>
           <Header />
@@ -59,7 +76,7 @@ const Scene = () => {
                 objects
                   .map((astre) => {
                      if (astre.bodyType === 'Star') return <Sun key={astre.id} sun={astre} />
-                     if (astre.bodyType === 'Planet') return <Planet key={astre.id} planet={astre} /> 
+                     if (astre.bodyType === 'Planet') return <Planet key={astre.id} planet={astre} moons={moons[astre.id]} /> 
                      return null
                   })}
             </Canvas>
