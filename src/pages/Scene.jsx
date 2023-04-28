@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Canvas} from '@react-three/fiber'
+import { Canvas, useFrame} from '@react-three/fiber'
 import { Stars, OrbitControls } from '@react-three/drei'
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios'
@@ -38,7 +38,7 @@ const Scene = () => {
             setMoons(moonsMap);
             setIsLoading(false);
           });
-        },1000);
+        },6000);
       }, []);
 
     return (

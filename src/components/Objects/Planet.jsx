@@ -1,7 +1,8 @@
 import { Clone, Torus, useGLTF, Center } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import Moon from './Moon';
+import Camera from '../../pages/Camera';
 
 
     const Planet = ({planet, moons}) => {
@@ -42,6 +43,7 @@ useFrame((state, delta)=>{
     return (
 
         <>
+                <Camera />
                 <mesh ref={turnArroundSun}>
                     <Clone
                         ref={planetRef}
