@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Canvas, useFrame} from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Stars, OrbitControls } from '@react-three/drei'
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios'
@@ -7,6 +7,7 @@ import Header from '../components/Header/Header'
 import Navbar from '../components/Navbar/Navbar'
 import Sun from '../components/Objects/Sun'
 import Planet from '../components/Objects/Planet'
+import Camera from './Camera';
 import './Scene.css'
 
 const Scene = () => {
@@ -54,6 +55,7 @@ const Scene = () => {
             
           ) : (<>
             <Canvas
+            
               camera={{
                 position: [0, 75, 0],
                 fov: 45,
@@ -61,6 +63,7 @@ const Scene = () => {
                 far: 999999999999
               }}
             >
+                <Camera />
               <Stars
                 radius={500}
                 depth={50}
