@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import Moon from './Moon';
 import './Planet.css'
 
-    const Planet = ({planet, moons}) => {
+    const Planet = ({planet, moons, indexColor, indexAstre}) => {
 
     let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
     
@@ -29,7 +29,7 @@ import './Planet.css'
         setClick(!click)
     )
 
-   { click ? color = 'white' : color = 'dimgray'}
+   { indexAstre === indexColor ? color = 'white' : color = 'dimgray'}
 
 useFrame((state, delta)=>{
         
