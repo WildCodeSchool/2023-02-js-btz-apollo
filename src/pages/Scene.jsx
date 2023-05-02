@@ -7,16 +7,14 @@ import Header from '../components/Header/Header'
 import Navbar from '../components/Navbar/Navbar'
 import Sun from '../components/Objects/Sun'
 import Planet from '../components/Objects/Planet'
-import Camera from './Camera';
 import './Scene.css'
 
 const Scene = () => {
     const [objects, setObjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [moons, setMoons] = useState({})
+    const [moons, setMoons] = useState({});
 
     useEffect(() => {
-      setTimeout(()=>{
         axios
           .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
           .then((res) => {
@@ -39,7 +37,6 @@ const Scene = () => {
             setMoons(moonsMap);
             setIsLoading(false);
           });
-        },6000);
       }, []);
 
     return (
@@ -55,7 +52,7 @@ const Scene = () => {
             
           ) : (<>
             <Canvas
-            
+            shadows
               camera={{
                 position: [0, 75, 0],
                 fov: 45,
@@ -63,7 +60,8 @@ const Scene = () => {
                 far: 999999999999
               }}
             >
-                <Camera />
+            {/* <Camera /> */}
+
               <Stars
                 radius={500}
                 depth={50}
@@ -74,7 +72,11 @@ const Scene = () => {
                 speed={0}
               />
               <OrbitControls makeDefault />
-              <pointLight intensity={0.5} />
+              <pointLight 
+                intensity={0.5}
+                castShadow
+                />
+
               {objects &&
                 objects
                   .map((astre) => {
@@ -86,7 +88,7 @@ const Scene = () => {
             </>
           )}
         </div>
-        <Navbar />
+        <Navbar/>
       </div>
     );
   };

@@ -1,0 +1,12 @@
+.name {
+    
+    font-family: Helvetica, Arial;
+    color: white;
+    overflow: hidden;
+    padding: 2em;
+    user-select: none;
+    position: static;
+    overflow: hidden;
+}
+
+

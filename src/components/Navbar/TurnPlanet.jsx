@@ -1,7 +1,10 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, createContext } from 'react';
 import { useFrame } from '@react-three/fiber';
 
-const TurnPlanet = ({ model }) => {
+const TurnPlanet = ({ model } ) => {
+
+
+    const PlanetContext = createContext()
     const modelRef = useRef();
     const [hover, setHover] = useState(false);
 
@@ -11,18 +14,16 @@ const TurnPlanet = ({ model }) => {
     });
   
   return (
-    <>
             <primitive
                 ref={modelRef} object={model.scene} scale={0.0015}
                 onPointerOver={() => {
-                    setHover(true);
+                    setHover(!hover);
                  }}
     
                 onPointerOut={() => {
-                    setHover(false);
+                    setHover(!hover);
                 }}
             />
-    </>
   );
 };
 

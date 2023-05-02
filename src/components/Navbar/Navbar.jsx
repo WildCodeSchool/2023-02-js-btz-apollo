@@ -4,7 +4,7 @@ import NavbarItem from './NavbarItem/NavbarItem';
 import './Navbar.css';
 
 const Navbar = () => {
-    
+
     const [navPlanet, setnavPlanet] = useState([]);
 
     useEffect(() => {
