@@ -8,7 +8,7 @@ import './Planet.css'
 
     let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
     
-    sideralRotation /= 1000000; //in hours in API => to convert
+    sideralRotation /= 10000; //in hours in API => to convert
     meanRadius /= 10000000;
     aphelion /= 10000000;
     
@@ -23,11 +23,6 @@ import './Planet.css'
     //conversion des angles de degres (API) vers radians (ThreeJS)
     const radianAxialTilt = (axialTilt * Math.PI) / 180
 
-    const [click, setClick] = useState(false)
-  
-    const orbitColor = ()=> (
-        setClick(!click)
-    )
 
    { indexAstre === indexColor ? color = 'white' : color = 'dimgray'}
 
@@ -48,16 +43,12 @@ useFrame((state, delta)=>{
                 scale={ meanRadius }
                 position={ [aphelion, 0 ,0] }
                 rotation={[0, 0 ,-radianAxialTilt]}
-                onPointerOver={orbitColor}
-                onPointerOut={orbitColor}
                 castShadow
             />
 
             <Html
                 position={ [ aphelion, 1, 0] }
                 wrapperClass='name'
-                onPointerOver={orbitColor}
-                onPointerOut={orbitColor}
                 center
             >
                 {planet.englishName}
