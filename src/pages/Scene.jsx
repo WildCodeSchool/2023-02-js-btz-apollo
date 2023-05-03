@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { Stars, OrbitControls } from '@react-three/drei'
+import { useState, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Stars, OrbitControls } from '@react-three/drei';
 import { SpinnerDotted } from 'spinners-react';
-import axios from 'axios'
+import axios from 'axios';
 import Header from '../components/Header/Header'
-import Navbar from '../components/Navbar/Navbar'
-import Sun from '../components/Objects/Sun'
-import Planet from '../components/Objects/Planet'
-import './Scene.css'
+import Card from '../components/Card/Card';
+import Navbar from '../components/Navbar/Navbar';
+import Sun from '../components/Objects/Sun';
+import Planet from '../components/Objects/Planet';
+import './Scene.css';
 
 const Scene = () => {
     const [objects, setObjects] = useState([]);
@@ -57,6 +58,19 @@ const Scene = () => {
             </div>
             
           ) : (<>
+
+          <div className="card-list">
+               {objects &&
+                objects
+                .filter((object) => object.bodyType === 'Planet')
+                .map((planet) => {
+                  return (
+                <Card key={planet.id} 
+                      scenePlanet={planet} 
+                />)
+                })}
+          </div>
+
             <Canvas
             shadows
               camera={{
