@@ -1,7 +1,8 @@
 import { Clone, Torus, useGLTF, Center, Html } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import Moon from './Moon';
+import {gsap} from 'gsap';
 import './Planet.css'
 
     const Planet = ({planet, moons, indexObject, indexAstre}) => {

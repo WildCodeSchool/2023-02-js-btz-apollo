@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useThree } from '@react-three/fiber'
 import { Stars, OrbitControls } from '@react-three/drei'
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios'
@@ -7,9 +7,11 @@ import Header from '../components/Header/Header'
 import Navbar from '../components/Navbar/Navbar'
 import Sun from '../components/Objects/Sun'
 import Planet from '../components/Objects/Planet'
+import Camera from './Camera';
 import './Scene.css'
 
 const Scene = () => {
+    
     const [objects, setObjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [moons, setMoons] = useState({});
@@ -19,7 +21,7 @@ const Scene = () => {
     const handleSetObject = (indexObject) => {
         setIndexObject( indexObject )
     }
-
+    
     useEffect(() => {
         axios
           .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
@@ -66,8 +68,7 @@ const Scene = () => {
                 far: 999999999999
               }}
             >
-            {/* <Camera /> */}
-
+            <Camera />
               <Stars
                 radius={500}
                 depth={50}
