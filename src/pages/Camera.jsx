@@ -11,7 +11,7 @@ const Camera = () => {
 
       useFrame((state, delta)=>{
         // const camera = useThree(state => state.camera)
-        console.log(originPos);
+        
         // const angle = -state.clock.elapsedTime / 50 ;
         // state.camera.position.x = Math.sin(angle) * 75
         // state.camera.position.z = Math.cos(angle) * 75

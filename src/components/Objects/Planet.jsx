@@ -18,6 +18,7 @@ import './Planet.css'
     const planetRef = useRef()
     const turnArroundSun = useRef()
     const torusRef = useRef()
+    const {gl, camera} = useThree()
     
     let color = 'white';
 
@@ -31,6 +32,15 @@ useFrame((state, delta)=>{
         
          planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
          turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 10000; //rotation de la planete autour du soleil
+        if (indexAstre === indexObject){
+            gsap.to(camera.position, {
+                x: ()=> aphelion,
+                y: ()=> 2,
+                z: ()=> 0,
+                duration: 2.5
+            })
+            state.camera.lookAt(aphelion, 0, 0)
+        }
 
     })
 
