@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 
-const TurnPlanet = ({ model }) => {
+const TurnPlanet = ({ model, index, handleSetIndexColor }) => {
     const modelRef = useRef();
     const [hover, setHover] = useState(false);
 
@@ -16,6 +16,7 @@ const TurnPlanet = ({ model }) => {
                 ref={modelRef} object={model.scene} scale={0.0015}
                 onPointerOver={() => {
                     setHover(true);
+                    handleSetIndexColor(index)
                  }}
     
                 onPointerOut={() => {

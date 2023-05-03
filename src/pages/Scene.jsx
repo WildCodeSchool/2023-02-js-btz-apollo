@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Canvas} from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Stars, OrbitControls } from '@react-three/drei'
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios'
@@ -12,10 +12,14 @@ import './Scene.css'
 const Scene = () => {
     const [objects, setObjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [moons, setMoons] = useState({})
+    const [moons, setMoons] = useState({});
+    const [indexColor, setIndexColor] = useState('')
+
+    const handleSetIndexColor = (indexColor) => {
+        setIndexColor( indexColor )
+    }
 
     useEffect(() => {
-      setTimeout(()=>{
         axios
           .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
           .then((res) => {
@@ -38,7 +42,6 @@ const Scene = () => {
             setMoons(moonsMap);
             setIsLoading(false);
           });
-        },1000);
       }, []);
 
     return (
@@ -54,6 +57,7 @@ const Scene = () => {
             
           ) : (<>
             <Canvas
+            shadows
               camera={{
                 position: [0, 75, 0],
                 fov: 45,
@@ -61,6 +65,8 @@ const Scene = () => {
                 far: 999999999999
               }}
             >
+            {/* <Camera /> */}
+
               <Stars
                 radius={500}
                 depth={50}
@@ -71,19 +77,23 @@ const Scene = () => {
                 speed={0}
               />
               <OrbitControls makeDefault />
-              <pointLight intensity={0.5} />
+              <pointLight 
+                intensity={0.5}
+                castShadow
+                />
+
               {objects &&
                 objects
-                  .map((astre) => {
+                  .map((astre, indexAstre) => {
                      if (astre.bodyType === 'Star') return <Sun key={astre.id} sun={astre} />
-                     if (astre.bodyType === 'Planet') return <Planet key={astre.id} planet={astre} moons={moons[astre.id]} /> 
+                     if (astre.bodyType === 'Planet') return <Planet key={astre.id} planet={astre} moons={moons[astre.id]} indexColor={indexColor} indexAstre={indexAstre} /> 
                      return null
                   })}
             </Canvas>
             </>
           )}
         </div>
-        <Navbar />
+        <Navbar handleSetIndexColor={handleSetIndexColor}/>
       </div>
     );
   };

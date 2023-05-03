@@ -1,4 +1,4 @@
-import { useGLTF} from '@react-three/drei'
+import { useGLTF, Clone} from '@react-three/drei'
 import { useRef } from 'react';
 
 const Moon = ({moon}) => {
@@ -17,11 +17,12 @@ const Moon = ({moon}) => {
 
     <>
         <mesh ref={turnArroundPlanet}>
-            <primitive
+            <Clone
                 ref = { moonRef }
                 object={ moonModel.scene }
                 scale={ meanRadius }
                 position={ [0,0,0] }
+                receiveShadow
             />
         </mesh>
     </>
