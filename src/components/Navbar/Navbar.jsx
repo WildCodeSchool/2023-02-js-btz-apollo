@@ -3,7 +3,7 @@ import axios from 'axios';
 import NavbarItem from './NavbarItem/NavbarItem';
 import './Navbar.css';
 
-const Navbar = ({handleSetIndexColor}) => {
+const Navbar = ({handleSetObject}) => {
 
     const [navPlanet, setnavPlanet] = useState([]);
 
@@ -18,7 +18,7 @@ const Navbar = ({handleSetIndexColor}) => {
             {navPlanet &&
             navPlanet
                 .filter((object) => object.bodyType === 'Star' || object.bodyType === 'Planet')
-                .map((planet, index) => <NavbarItem key={planet.id} navPlanet={planet} index={index} handleSetIndexColor={handleSetIndexColor} />)}
+                .map((planet, index) => <NavbarItem key={planet.id} navPlanet={planet} index={index} handleSetObject={handleSetObject} />)}
         </div>
     );
 };
