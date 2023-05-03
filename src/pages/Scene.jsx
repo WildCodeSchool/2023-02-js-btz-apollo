@@ -13,10 +13,11 @@ const Scene = () => {
     const [objects, setObjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [moons, setMoons] = useState({});
-    const [indexColor, setIndexColor] = useState('')
 
-    const handleSetIndexColor = (indexColor) => {
-        setIndexColor( indexColor )
+    const [indexObject, setIndexObject] = useState('')
+
+    const handleSetObject = (indexObject) => {
+        setIndexObject( indexObject )
     }
 
     useEffect(() => {
@@ -86,14 +87,19 @@ const Scene = () => {
                 objects
                   .map((astre, indexAstre) => {
                      if (astre.bodyType === 'Star') return <Sun key={astre.id} sun={astre} />
-                     if (astre.bodyType === 'Planet') return <Planet key={astre.id} planet={astre} moons={moons[astre.id]} indexColor={indexColor} indexAstre={indexAstre} /> 
+                     if (astre.bodyType === 'Planet') return <Planet key={astre.id} 
+                                                                     planet={astre} 
+                                                                     moons={moons[astre.id]} 
+                                                                     indexObject={indexObject} 
+                                                                     indexAstre={indexAstre} 
+                                                             /> 
                      return null
                   })}
             </Canvas>
             </>
           )}
         </div>
-        <Navbar handleSetIndexColor={handleSetIndexColor}/>
+        <Navbar handleSetObject={handleSetObject}/>
       </div>
     );
   };

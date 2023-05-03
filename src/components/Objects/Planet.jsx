@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import Moon from './Moon';
 import './Planet.css'
 
-    const Planet = ({planet, moons, indexColor, indexAstre}) => {
+    const Planet = ({planet, moons, indexObject, indexAstre}) => {
 
     let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
     
@@ -24,7 +24,7 @@ import './Planet.css'
     const radianAxialTilt = (axialTilt * Math.PI) / 180
 
 
-   { indexAstre === indexColor ? color = 'white' : color = 'dimgray'}
+   { indexAstre === indexObject ? color = 'white' : color = 'dimgray'}
 
 useFrame((state, delta)=>{
         
