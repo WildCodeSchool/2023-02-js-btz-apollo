@@ -12,6 +12,7 @@ import './Scene.css';
 
 const Scene = () => {
     const [objects, setObjects] = useState([]);
+    const [clicked,setClicked] = useState (false)
     const [isLoading, setIsLoading] = useState(true);
     const [moons, setMoons] = useState({});
 
@@ -19,6 +20,10 @@ const Scene = () => {
 
     const handleSetObject = (indexObject) => {
         setIndexObject( indexObject )
+    }
+
+    const handleClicked = ()=>{
+      setClicked(!clicked)
     }
 
     useEffect(() => {
@@ -56,10 +61,11 @@ const Scene = () => {
             <span>Loading</span> 
             <SpinnerDotted color="#424463" />
             </div>
-            
-          ) : (<>
-
-          <div className="card-list">
+            ) : (
+          <>
+              {clicked ? (
+          
+           <div className="card-list">
                {objects &&
                 objects
                 .filter((object) => object.bodyType === 'Planet')
@@ -69,7 +75,7 @@ const Scene = () => {
                       scenePlanet={planet} 
                 />)
                 })}
-          </div>
+           </div>) : null }
 
             <Canvas
             shadows
@@ -106,14 +112,15 @@ const Scene = () => {
                                                                      moons={moons[astre.id]} 
                                                                      indexObject={indexObject} 
                                                                      indexAstre={indexAstre} 
-                                                             /> 
-                     return null
-                  })}
+                                                                /> 
+                                                return null;
+                                                })}
             </Canvas>
             </>
-          )}
+              )}
         </div>
-        <Navbar handleSetObject={handleSetObject}/>
+        <Navbar handleSetObject={handleSetObject}
+                handleClicked={handleClicked}/>
       </div>
     );
   };
