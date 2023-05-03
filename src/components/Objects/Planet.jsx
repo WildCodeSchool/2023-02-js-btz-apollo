@@ -1,11 +1,10 @@
 import { Clone, Torus, useGLTF, Center } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import { useRef, useState, useEffect } from 'react';
-import axios from 'axios';
 import Moon from './Moon';
 
 
-const Planet = ({planet}) => {
+    const Planet = ({planet, moons}) => {
 
     let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
     
@@ -15,7 +14,6 @@ const Planet = ({planet}) => {
     
     const planetModel = useGLTF(planet.model3d);
     const earthOrbit = 365.256;
-    const [moons, setMoons] = useState([]);
     const planetRef = useRef()
     const turnArroundSun = useRef()
     const torusRef = useRef()
@@ -24,12 +22,6 @@ const Planet = ({planet}) => {
 
     //conversion des angles de degres (API) vers radians (ThreeJS)
     const radianAxialTilt = (axialTilt * Math.PI) / 180
-
-    useEffect(() => {
-    axios
-        .get('https://apollo-api.martinnoel.fr/solar-system/solar-system')
-        .then((res) => setMoons(res.data.bodies));
-    }, []);
 
     const [click, setClick] = useState(false)
   
@@ -70,7 +62,6 @@ useFrame((state, delta)=>{
 
                 {moons &&
                 moons
-                .filter((object) => object.bodyType === 'Moon' && object.aroundPlanet.planet === planet.id)
                 .map((moon)=>(
                     <Center key={moon.id}  position={[aphelion + moon.aphelion /150000, 0 ,0]}>
                         <Moon moon = {moon} />
