@@ -1,12 +1,18 @@
+    .card-container{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content:flex-start;
+        align-items: center;
+        position: absolute;
+    }
     .cards {
     width: 30vw;
     height: auto;
+    margin-left: 3em;
     background-color: rgba(54, 54, 54, 0.185);
     border-radius: 8px;
-    margin: 0.5em;
-    position: absolute;
-    left:10px;
-    top:40px;
+    position: relative;
     z-index: 1;
 }
 
@@ -15,6 +21,14 @@
     flex-direction: column;
     align-items: center;
     margin: 0 5px 0 5px;
+}
+.container-title > span{
+    position: absolute;
+    top : 5px;
+    right: 10px;
+    font-size: larger;
+    font-weight: bolder;
+    cursor: pointer;
 }
 
 .title {
@@ -34,9 +48,9 @@
 }
 
 .planet-image > img {
-    width: 80%;
+    width:75%;
     object-fit: cover;
-    padding-left: 7em;
+    padding-left: 4em;
     
 }
 
