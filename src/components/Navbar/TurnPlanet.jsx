@@ -14,7 +14,7 @@ const TurnPlanet = ({ model, index, handleSetObject, handleClicked }) => {
     <>
             <primitive
                 ref={modelRef} object={model.scene} scale={0.0015}
-                onClick={()=>{
+                onDoubleClick={()=>{
                     handleSetObject(index)
                     handleClicked()
                 }}
