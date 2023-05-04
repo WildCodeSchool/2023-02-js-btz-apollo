@@ -5,6 +5,7 @@ const Card = ( {scenePlanet} ) => {
 const moons = scenePlanet.moons;
 
     return (
+        <div className='card-container'>
         <div className="cards">
             <div className="container-title">
                 <h1 className="title">
@@ -37,6 +38,7 @@ const moons = scenePlanet.moons;
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 };
