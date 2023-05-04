@@ -1,9 +1,10 @@
-import { Clone, Torus, useGLTF, Center, Html, CameraControls, OrbitControls } from '@react-three/drei'
+import { Clone, Torus, useGLTF, Center } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import Moon from './Moon';
 import {gsap} from 'gsap';
 import './Planet.css'
+import { Vector3 } from 'three';
 
     const Planet = ({planet, moons, indexObject, indexAstre}) => {
 
@@ -23,24 +24,27 @@ import './Planet.css'
     const [isFocus, setIsFocus] = useState(true)
     
     let color = 'white';
+    let position = 0
+    let vertex = new Vector3();
 
     //conversion des angles de degres (API) vers radians (ThreeJS)
     const radianAxialTilt = (axialTilt * Math.PI) / 180
 
    { indexAstre === indexObject ? color = 'white' : color = 'dimgray'}
 
-   
    useFrame((state, delta)=>{
-       
-       const focusCam = () => {
-           state.camera.lookAt(aphelion, 0, -0.5)
-       }
-    
-         planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
-          //turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
 
-         if (indexAstre === indexObject){
+        position = (planetRef.current.children[0].geometry.getAttribute( 'position' ));
+        vertex.fromBufferAttribute( position );
+        console.log(planetRef.current.children[0].getWorldPosition(vertex))
+        
 
+        planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
+        turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
+        
+        if (indexAstre === indexObject){
+           
+            
             if(meanRadius > 0.0050 )
 
            {  gsap.to(camera.position, {
@@ -76,7 +80,7 @@ import './Planet.css'
             }
             setIsFocus(false)
         }
-        
+ 
     })
 
     return (
@@ -91,9 +95,6 @@ import './Planet.css'
                 position={ [aphelion, 0 ,0] }
                 rotation={[0, 0 ,-radianAxialTilt]}
                 castShadow
-                onClick={()=>{
-
-                }}
             >
             </Clone>
 
