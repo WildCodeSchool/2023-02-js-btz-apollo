@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Stars, OrbitControls } from '@react-three/drei';
+import { Stars, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios';
 import Header from '../components/Header/Header'
@@ -83,13 +83,15 @@ const Scene = () => {
 
             <Canvas
             shadows
-              camera={{
-                position: [-70, 70, 70],
-                fov: 45,
-                near: 0.1,
-                far: 999999999999
-              }}
+              camera
             >
+                <PerspectiveCamera makeDefault 
+                                    position={[-70, 70, 70]}
+                                    fov={45}
+                                    near={0.1}
+                                    far={9999999999} />
+
+                <OrbitControls />
 
               <Stars
                 radius={500}
@@ -100,8 +102,7 @@ const Scene = () => {
                 fade
                 speed={0}
               />
-              <OrbitControls makeDefault />
-              
+
               <pointLight 
                 intensity={0.5}
                 castShadow

@@ -1,4 +1,4 @@
-import { Clone, Torus, useGLTF, Center } from '@react-three/drei'
+import { Clone, Torus, useGLTF, Center, OrbitControls } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import Moon from './Moon';
@@ -33,7 +33,10 @@ import { Vector3 } from 'three';
 
    { indexAstre === indexObject ? color = 'white' : color = 'dimgray'}
 
-   useFrame((state, delta)=>{
+   const gsapEase = 'back(0.7, 0.7, false)'
+   const gsapDuration = 2.5
+
+   useFrame((state)=>{
 
        
        position = (planetRef.current.children[0].geometry.getAttribute( 'position' ));
@@ -42,7 +45,7 @@ import { Vector3 } from 'three';
        
        const targetPlanet = () => {
 
-            state.camera.lookAt(pos.x , 0, pos.z )
+            state.camera.lookAt(pos.x -0.5 , 0, pos.z )
 
        }
 
@@ -50,19 +53,19 @@ import { Vector3 } from 'three';
         turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
         
         if (indexAstre === indexObject){
-            setIsFocus(true)
-           if(isFocus){
+            
+           if(!isFocus){
 
                 if(meanRadius > 0.0050 )
 
-            {  gsap.to(camera.position, {
+            { 
+                gsap.to(camera.position, {
                     x:  pos.x -15,
                     y:  0,
                     z:  pos.z +8,
-                    duration: 2.5
+                    duration: gsapDuration,
+                    ease: gsapEase
                     })
-
-                    targetPlanet()
                 }
                 
              else if (meanRadius < 0.0050 && meanRadius > 0.0024  )  {
@@ -70,30 +73,29 @@ import { Vector3 } from 'three';
                 gsap.to(camera.position, {
                  x:  pos.x -5,
                  y:  0,
-                 z: pos.z +5,
-                 duration: 2.5
+                 z: pos.z + 8,
+                 duration: gsapDuration,
+                ease: gsapEase
                 })
 
-                targetPlanet()
             } else {
 
                  gsap.to(camera.position, {
-                 x:  pos.x -0.5,
-                 y:  0.5,
-                 z:  pos.z + 0.5,
-                 duration: 2.5
+                 x:  pos.x -1,
+                 y:  0,
+                 z:  pos.z + 2,
+                 duration: gsapDuration,
+                    ease: gsapEase
                 })
 
-                targetPlanet()
             }
         }
+        targetPlanet()
         }
- 
     })
 
     return (
     <>
-            
         <mesh ref={turnArroundSun}>
 
             <Clone
@@ -104,7 +106,7 @@ import { Vector3 } from 'three';
                 rotation={[0, 0 ,-radianAxialTilt]}
                 castShadow
                 onMouseDown={()=>{
-                    setIsFocus(false)
+                
                 }}
             >
             </Clone>
@@ -114,7 +116,7 @@ import { Vector3 } from 'three';
                     args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
                     rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
                     material-color = {color}
-                    visible={!isFocus}
+                    visible={isFocus}
                 />
 
                 {moons &&
