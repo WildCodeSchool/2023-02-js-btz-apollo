@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei';
 import TurnPlanet from '../TurnPlanet';
 import './NavbarItem.css';
 
-const NavbarItem = ({ navPlanet, index, handleSetObject,handleClicked }) => {
+const NavbarItem = ({ navPlanet, index, handleSetObject, handleClicked }) => {
 
     const { model3d } = navPlanet;
     const model = useGLTF(model3d);
