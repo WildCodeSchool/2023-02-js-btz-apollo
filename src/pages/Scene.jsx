@@ -24,7 +24,10 @@ const Scene = () => {
     }
 
     const handleClicked = ()=>{
-      setClicked(!clicked)
+      setClicked(true)
+    }
+    const handleClose = ()=>{
+      setClicked( false )
     }
 
     useEffect(() => {
@@ -73,6 +76,7 @@ const Scene = () => {
              return (
            <Card key={planet.id} 
                  scenePlanet={planet}
+                 handleClose={handleClose}
            />)
            })}
       </div>) : null }
