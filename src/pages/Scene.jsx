@@ -110,13 +110,13 @@ const Scene = () => {
               {objects &&
                 objects
                   .map((astre, indexAstre) => {
-                     if (astre.bodyType === 'Star') return <Sun key={astre.id} sun={astre} />
+                     if (astre.bodyType === 'Star') return <Sun key={astre.id} 
+                                                                sun={astre}  />
                      if (astre.bodyType === 'Planet') return <Planet key={astre.id} 
                                                                      planet={astre} 
                                                                      moons={moons[astre.id]} 
                                                                      indexObject={indexObject} 
-                                                                     indexAstre={indexAstre} 
-                                                                /> 
+                                                                     indexAstre={indexAstre} />
                     return null;
                     })}
             </Canvas>
