@@ -71,7 +71,7 @@ const Scene = () => {
       <div className="card-list">
           {objects &&
            objects
-           .filter((object,index) => object.bodyType === 'Planet' && index === indexObject)
+           .filter((object,index) => object.bodyType === 'Planet' && index === indexObject || object.bodyType === 'Star' && index === indexObject || object.bodyType === 'Moon' && index === indexObject )
            .map((planet) => {
              return (
            <Card key={planet.id} 
