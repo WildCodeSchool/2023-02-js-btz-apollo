@@ -10,7 +10,7 @@ import { Vector3 } from 'three';
 
     let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
     
-    sideralRotation /= 10000; //in hours in API => to convert
+    sideralRotation /= 100000; //in hours in API => to convert
     meanRadius /= 10000000;
     aphelion /= 10000000;
     
@@ -25,7 +25,8 @@ import { Vector3 } from 'three';
     
     let color = 'white';
     let position = 0
-    let vertex = new Vector3();
+    let planetPosition = new Vector3();
+    let pos = {}
 
     //conversion des angles de degres (API) vers radians (ThreeJS)
     const radianAxialTilt = (axialTilt * Math.PI) / 180
@@ -34,49 +35,54 @@ import { Vector3 } from 'three';
 
    useFrame((state, delta)=>{
 
-        position = (planetRef.current.children[0].geometry.getAttribute( 'position' ));
-        vertex.fromBufferAttribute( position );
-        console.log(planetRef.current.children[0].getWorldPosition(vertex))
-        
+       
+       position = (planetRef.current.children[0].geometry.getAttribute( 'position' ));
+       planetPosition.fromBufferAttribute( position );
+       pos = planetRef.current.children[0].getWorldPosition(planetPosition)
+       
+       const targetPlanet = () => {
+
+        state.camera.lookAt(pos.x, 0, pos.z )
+
+       }
 
         planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
         turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
         
         if (indexAstre === indexObject){
            
-            
             if(meanRadius > 0.0050 )
 
            {  gsap.to(camera.position, {
-                 x: ()=> aphelion -15,
-                 y: ()=> 0,
-                 z: ()=> 8,
+                 x: ()=> pos.x -15,
+                 y: ()=> 1,
+                 z: ()=> pos.z +8,
                  duration: 2.5
                 })
 
-                state.camera.lookAt(aphelion, 0, -5)
+                targetPlanet()
                 
             } else if (meanRadius < 0.0050 && meanRadius > 0.0024  )  {
 
                 gsap.to(camera.position, {
-                 x: ()=> aphelion -5,
-                 y: ()=> 0,
-                 z: ()=> 5,
+                 x: ()=> pos.x -5,
+                 y: ()=> 1,
+                 z: ()=> pos.z +5,
                  duration: 2.5
                 })
 
-                state.camera.lookAt(aphelion, 0, -3)
+                targetPlanet()
 
             } else {
 
                  gsap.to(camera.position, {
-                 x: ()=> aphelion -1,
-                 y: ()=> 0,
-                 z: ()=> 1,
+                 x: ()=> pos.x -1,
+                 y: ()=> 1,
+                 z: ()=> pos.z + 1,
                  duration: 2.5
                 })
 
-                state.camera.lookAt(aphelion, 0, -0.5)
+                targetPlanet()
             }
             setIsFocus(false)
         }
