@@ -97,7 +97,7 @@ const Scene = () => {
                 speed={0}
               />
               <OrbitControls makeDefault />
-
+              
               <pointLight 
                 intensity={0.5}
                 castShadow
@@ -113,8 +113,8 @@ const Scene = () => {
                                                                      indexObject={indexObject} 
                                                                      indexAstre={indexAstre} 
                                                                 /> 
-                                                return null;
-                                                })}
+                    return null;
+                    })}
             </Canvas>
             </>
               )}

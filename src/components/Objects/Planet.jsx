@@ -18,7 +18,7 @@ import './Planet.css'
     const planetRef = useRef()
     const turnArroundSun = useRef()
     const torusRef = useRef()
-    const {gl, camera, scene} = useThree()
+    const { camera } = useThree()
 
     const [isFocus, setIsFocus] = useState(true)
     
@@ -29,11 +29,15 @@ import './Planet.css'
 
    { indexAstre === indexObject ? color = 'white' : color = 'dimgray'}
 
-useFrame((state, delta)=>{
-
+   
+   useFrame((state, delta)=>{
+       
+       const focusCam = () => {
+           state.camera.lookAt(aphelion, 0, 0)
+       }
     
          planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
-        //  turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1; //rotation de la planete autour du soleil
+          //turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
 
          if (indexAstre === indexObject){
 
@@ -46,42 +50,40 @@ useFrame((state, delta)=>{
                  duration: 2.5
                 })
 
-                state.camera.lookAt(aphelion -5,0,0)
-
+                focusCam()
+                
             } else if (meanRadius < 0.0050 && meanRadius > 0.0024  )  {
 
                 gsap.to(camera.position, {
-                 x: ()=> aphelion -1,
-                 y: ()=> 0,
+                 x: ()=> aphelion -5,
+                 y: ()=> 0.5,
                  z: ()=> 5,
                  duration: 2.5
                 })
 
-                state.camera.lookAt(aphelion -1.5,0,0)
+                focusCam()
 
             } else {
 
                  gsap.to(camera.position, {
                  x: ()=> aphelion -1,
-                 y: ()=> 0,
+                 y: ()=> 0.5,
                  z: ()=> 1,
                  duration: 2.5
                 })
 
-                state.camera.lookAt(aphelion -0.5,0,0)
+                focusCam()
             }
-
             setIsFocus(false)
-
         }
-            
-
+        
     })
 
     return (
     <>
             
         <mesh ref={turnArroundSun}>
+
             <Clone
                 ref={planetRef}
                 object={ planetModel.scene }
@@ -89,16 +91,14 @@ useFrame((state, delta)=>{
                 position={ [aphelion, 0 ,0] }
                 rotation={[0, 0 ,-radianAxialTilt]}
                 castShadow
-            />
+                onClick={()=>{
 
-            {/* <Html
-                position={ [ aphelion, 1, 0] }
-                wrapperClass='name'
-                center
+                }}
             >
-                {planet.englishName}
-            </Html> */}
-                            
+            </Clone>
+
+
+           
                 <Torus
                     ref={torusRef}
                     args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
