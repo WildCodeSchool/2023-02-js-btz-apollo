@@ -21,7 +21,7 @@ import { Vector3 } from 'three';
     const torusRef = useRef()
     const { camera } = useThree()
 
-    const [isFocus, setIsFocus] = useState(true)
+    const [isFocus, setIsFocus] = useState(false)
     
     let color = 'white';
     let position = 0
@@ -42,7 +42,7 @@ import { Vector3 } from 'three';
        
        const targetPlanet = () => {
 
-        state.camera.lookAt(pos.x, 0, pos.z )
+            state.camera.lookAt(pos.x , 0, pos.z )
 
        }
 
@@ -50,24 +50,27 @@ import { Vector3 } from 'three';
         turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
         
         if (indexAstre === indexObject){
-           
-            if(meanRadius > 0.0050 )
+            setIsFocus(true)
+           if(isFocus){
 
-           {  gsap.to(camera.position, {
-                 x: ()=> pos.x -15,
-                 y: ()=> 1,
-                 z: ()=> pos.z +8,
-                 duration: 2.5
-                })
+                if(meanRadius > 0.0050 )
 
-                targetPlanet()
+            {  gsap.to(camera.position, {
+                    x:  pos.x -15,
+                    y:  0,
+                    z:  pos.z +8,
+                    duration: 2.5
+                    })
+
+                    targetPlanet()
+                }
                 
-            } else if (meanRadius < 0.0050 && meanRadius > 0.0024  )  {
+             else if (meanRadius < 0.0050 && meanRadius > 0.0024  )  {
 
                 gsap.to(camera.position, {
-                 x: ()=> pos.x -5,
-                 y: ()=> 1,
-                 z: ()=> pos.z +5,
+                 x:  pos.x -5,
+                 y:  0,
+                 z: pos.z +5,
                  duration: 2.5
                 })
 
@@ -76,15 +79,15 @@ import { Vector3 } from 'three';
             } else {
 
                  gsap.to(camera.position, {
-                 x: ()=> pos.x -1,
-                 y: ()=> 1,
-                 z: ()=> pos.z + 1,
+                 x:  pos.x -0.5,
+                 y:  0.5,
+                 z:  pos.z + 0.5,
                  duration: 2.5
                 })
 
                 targetPlanet()
             }
-            setIsFocus(false)
+        }
         }
  
     })
@@ -101,17 +104,18 @@ import { Vector3 } from 'three';
                 position={ [aphelion, 0 ,0] }
                 rotation={[0, 0 ,-radianAxialTilt]}
                 castShadow
+                onMouseDown={()=>{
+                    setIsFocus(false)
+                }}
             >
             </Clone>
 
-
-           
                 <Torus
                     ref={torusRef}
                     args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
                     rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
                     material-color = {color}
-                    visible={isFocus}
+                    visible={!isFocus}
                 />
 
                 {moons &&
