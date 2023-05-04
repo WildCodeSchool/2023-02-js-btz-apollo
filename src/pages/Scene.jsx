@@ -1,16 +1,18 @@
-import { useState, useEffect } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { Stars, OrbitControls } from '@react-three/drei'
+import { useState, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Stars, OrbitControls } from '@react-three/drei';
 import { SpinnerDotted } from 'spinners-react';
-import axios from 'axios'
+import axios from 'axios';
 import Header from '../components/Header/Header'
-import Navbar from '../components/Navbar/Navbar'
-import Sun from '../components/Objects/Sun'
-import Planet from '../components/Objects/Planet'
-import './Scene.css'
+import Card from '../components/Card/Card';
+import Navbar from '../components/Navbar/Navbar';
+import Sun from '../components/Objects/Sun';
+import Planet from '../components/Objects/Planet';
+import './Scene.css';
 
 const Scene = () => {
     const [objects, setObjects] = useState([]);
+    const [clicked,setClicked] = useState (false)
     const [isLoading, setIsLoading] = useState(true);
     const [moons, setMoons] = useState({});
 
@@ -18,6 +20,10 @@ const Scene = () => {
 
     const handleSetObject = (indexObject) => {
         setIndexObject( indexObject )
+    }
+
+    const handleClicked = ()=>{
+      setClicked(!clicked)
     }
 
     useEffect(() => {
@@ -29,7 +35,7 @@ const Scene = () => {
               
               res.data.bodies.forEach(element => {
 
-                if(element.bodyType !== 'Moon' ) {
+                if (element.bodyType !== 'Moon' ) {
                     return
                 }
 
@@ -55,8 +61,21 @@ const Scene = () => {
             <span>Loading</span> 
             <SpinnerDotted color="#424463" />
             </div>
-            
-          ) : (<>
+            ) : (
+              <>
+              {clicked ? (
+      <div className="card-list">
+          {objects &&
+           objects
+           .filter((object,index) => object.bodyType === 'Planet' && index === indexObject)
+           .map((planet) => {
+             return (
+           <Card key={planet.id} 
+                 scenePlanet={planet}
+           />)
+           })}
+      </div>) : null }
+
             <Canvas
             shadows
               camera={{
@@ -66,6 +85,7 @@ const Scene = () => {
                 far: 999999999999
               }}
             >
+
             {/* <Camera /> */}
 
               <Stars
@@ -92,14 +112,15 @@ const Scene = () => {
                                                                      moons={moons[astre.id]} 
                                                                      indexObject={indexObject} 
                                                                      indexAstre={indexAstre} 
-                                                             /> 
-                     return null
-                  })}
+                                                                /> 
+                                                return null;
+                                                })}
             </Canvas>
             </>
-          )}
+              )}
         </div>
-        <Navbar handleSetObject={handleSetObject}/>
+        <Navbar handleSetObject={handleSetObject}
+                handleClicked={handleClicked}/>
       </div>
     );
   };

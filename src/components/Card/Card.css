@@ -1,14 +1,19 @@
-.cards {
-    width: 20%;
+    .cards {
+    width: 30vw;
+    height: auto;
     background-color: rgba(54, 54, 54, 0.185);
     border-radius: 8px;
     margin: 0.5em;
-    position: relative;
+    position: absolute;
+    left:10px;
+    top:40px;
+    z-index: 1;
 }
 
 .container-title {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 0 5px 0 5px;
 }
 
@@ -16,27 +21,23 @@
     display: flex;
     justify-content: space-between;
     font-size: 1.5em;
-    padding-bottom: 5%;
     padding-top: 5%;
 }
 
 .description {
     font-size: 1em;
-    padding-bottom: 10%;
 }
 
 .planet-image {
     width: 100%;
+    height: auto;
 }
 
 .planet-image > img {
-    width: 100%;
+    width: 80%;
     object-fit: cover;
-}
-
-h5 {
-    text-align: center;
-    margin: 1.5em;
+    padding-left: 7em;
+    
 }
 
 .bot-card {
@@ -44,36 +45,42 @@ h5 {
     flex-direction: column;
 }
 
+h5 {
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+.presentation {
+    width: 100%;
+    font-size: 0.7em;
+    padding: 1em 1em 0 1em;
+    letter-spacing: 0.5px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma;
+}
 
 .moon-container {
     width: 100%;
     min-height: 2.5em;
-    display: flex;
     justify-content: center;
     text-align: center;
     padding: 3%;
 }
 
 .moons {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     gap: 1em;
 }
 
+.moons > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .moon-title>h2 {
     font-size: 1em;
-}
-
-.moons-desc {
-    font-size: 0.7em;
-}
-
-.presentation {
-    width: 100%;
-    font-size: 0.7em;
-    margin: 2px;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma;
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Card from '../../components/Card/Card';
 import './CardList.css';
 
-const CardList = () => {
+const CardList = ( {indexObject,handleSetObject} ) => {
   const [scenePlanet, setScenePlanet] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,11 @@ const CardList = () => {
       {scenePlanet &&
         scenePlanet
           .filter((object) => object.bodyType === 'Planet')
-          .map((planet) => <Card key={planet.id} scenePlanet={planet} />)}
+          .map((planet) => {
+            <Card key={planet.id} 
+                  scenePlanet={planet} 
+                  />
+          })}
     </div>
   );
 };
