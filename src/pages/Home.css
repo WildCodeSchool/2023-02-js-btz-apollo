@@ -1,0 +1,77 @@
+.home-container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.card-container{
+    width: 80%;
+    height: 80vh;
+    background-color: rgba(129, 129, 129, 0.861);
+    border-radius: 10px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    color: black;
+    position: relative;
+}
+
+.exit {
+    position: absolute;
+    top: 0.2em;
+    right: 0.6em;
+    font-size: 2em;
+    cursor: pointer;
+
+}
+
+.card-container > h1 {
+    padding-top: 0.5em;
+    font-size: 4.5em;
+}
+
+.main-text-container{
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+}
+
+.main-text-container > p {
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+.home-footer {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.team {
+    width:60%;
+    padding-left: 3em;
+    display: flex;
+    font-weight: 600;
+    gap: 1em;
+    
+}
+
+.home-footer > span {
+    padding-left: 2em;
+}
+
+.team > ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
