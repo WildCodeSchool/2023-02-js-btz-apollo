@@ -11,6 +11,7 @@ import Planet from '../components/Objects/Planet';
 import './Scene.css';
 
 const Scene = () => {
+
     const [objects, setObjects] = useState([]);
     const [clicked,setClicked] = useState (false)
     const [isLoading, setIsLoading] = useState(true);
@@ -83,14 +84,12 @@ const Scene = () => {
             <Canvas
             shadows
               camera={{
-                position: [0, 75, 0],
+                position: [-70, 70, 70],
                 fov: 45,
                 near: 0.1,
                 far: 999999999999
               }}
             >
-
-            {/* <Camera /> */}
 
               <Stars
                 radius={500}
@@ -102,6 +101,7 @@ const Scene = () => {
                 speed={0}
               />
               <OrbitControls makeDefault />
+              
               <pointLight 
                 intensity={0.5}
                 castShadow
@@ -117,8 +117,8 @@ const Scene = () => {
                                                                      indexObject={indexObject} 
                                                                      indexAstre={indexAstre} 
                                                                 /> 
-                                                return null;
-                                                })}
+                    return null;
+                    })}
             </Canvas>
             </>
               )}

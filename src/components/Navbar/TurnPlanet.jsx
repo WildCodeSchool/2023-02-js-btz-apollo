@@ -17,11 +17,13 @@ const TurnPlanet = ({ model, index, handleSetObject, handleClicked }) => {
                 onClick={handleClicked}
                 onPointerOver={() => {
                     setHover(true);
-                    handleSetObject(index)
                  }}
     
                 onPointerOut={() => {
                     setHover(false);
+                }}
+                onDoubleClick={() =>{
+                    handleSetObject(index)
                 }}
             />
     </>

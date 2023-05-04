@@ -1,7 +1,8 @@
-import { Clone, Torus, useGLTF, Center, Html } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
+import { Clone, Torus, useGLTF, Center, Html, CameraControls, OrbitControls } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import Moon from './Moon';
+import {gsap} from 'gsap';
 import './Planet.css'
 
     const Planet = ({planet, moons, indexObject, indexAstre}) => {
@@ -17,26 +18,72 @@ import './Planet.css'
     const planetRef = useRef()
     const turnArroundSun = useRef()
     const torusRef = useRef()
+    const { camera } = useThree()
+
+    const [isFocus, setIsFocus] = useState(true)
     
     let color = 'white';
 
     //conversion des angles de degres (API) vers radians (ThreeJS)
     const radianAxialTilt = (axialTilt * Math.PI) / 180
 
-
    { indexAstre === indexObject ? color = 'white' : color = 'dimgray'}
 
-useFrame((state, delta)=>{
-        
+   
+   useFrame((state, delta)=>{
+       
+       const focusCam = () => {
+           state.camera.lookAt(aphelion, 0, -0.5)
+       }
+    
          planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
-         turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 10000; //rotation de la planete autour du soleil
+          //turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
 
+         if (indexAstre === indexObject){
+
+            if(meanRadius > 0.0050 )
+
+           {  gsap.to(camera.position, {
+                 x: ()=> aphelion -15,
+                 y: ()=> 0,
+                 z: ()=> 8,
+                 duration: 2.5
+                })
+
+                state.camera.lookAt(aphelion, 0, -5)
+                
+            } else if (meanRadius < 0.0050 && meanRadius > 0.0024  )  {
+
+                gsap.to(camera.position, {
+                 x: ()=> aphelion -5,
+                 y: ()=> 0,
+                 z: ()=> 5,
+                 duration: 2.5
+                })
+
+                state.camera.lookAt(aphelion, 0, -3)
+
+            } else {
+
+                 gsap.to(camera.position, {
+                 x: ()=> aphelion -1,
+                 y: ()=> 0,
+                 z: ()=> 1,
+                 duration: 2.5
+                })
+
+                state.camera.lookAt(aphelion, 0, -0.5)
+            }
+            setIsFocus(false)
+        }
+        
     })
 
     return (
     <>
             
         <mesh ref={turnArroundSun}>
+
             <Clone
                 ref={planetRef}
                 object={ planetModel.scene }
@@ -44,21 +91,20 @@ useFrame((state, delta)=>{
                 position={ [aphelion, 0 ,0] }
                 rotation={[0, 0 ,-radianAxialTilt]}
                 castShadow
-            />
+                onClick={()=>{
 
-            <Html
-                position={ [ aphelion, 1, 0] }
-                wrapperClass='name'
-                center
+                }}
             >
-                {planet.englishName}
-            </Html>
-                            
+            </Clone>
+
+
+           
                 <Torus
                     ref={torusRef}
                     args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
                     rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
                     material-color = {color}
+                    visible={isFocus}
                 />
 
                 {moons &&
@@ -69,7 +115,7 @@ useFrame((state, delta)=>{
                     </Center>
                     ))
                 } 
-                </mesh>
+        </mesh>
 
         </>
     )
