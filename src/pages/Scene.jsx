@@ -111,9 +111,7 @@ const Scene = () => {
                 objects
                   .map((astre, indexAstre) => {
                      if (astre.bodyType === 'Star') return <Sun key={astre.id} 
-                                                                sun={astre} 
-                                                                indexObject={indexObject} 
-                                                                indexAstre={indexAstre} />
+                                                                sun={astre}  />
                      if (astre.bodyType === 'Planet') return <Planet key={astre.id} 
                                                                      planet={astre} 
                                                                      moons={moons[astre.id]} 

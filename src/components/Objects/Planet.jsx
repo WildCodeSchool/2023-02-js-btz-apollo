@@ -75,7 +75,6 @@ import { Vector3 } from 'three';
                 })
 
                 targetPlanet()
-
             } else {
 
                  gsap.to(camera.position, {
