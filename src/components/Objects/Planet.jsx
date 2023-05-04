@@ -33,7 +33,7 @@ import './Planet.css'
    useFrame((state, delta)=>{
        
        const focusCam = () => {
-           state.camera.lookAt(aphelion, 0, 0)
+           state.camera.lookAt(aphelion, 0, -0.5)
        }
     
          planetRef.current.rotation.y += sideralRotation; //rotation sur elle-meme
@@ -45,34 +45,34 @@ import './Planet.css'
 
            {  gsap.to(camera.position, {
                  x: ()=> aphelion -15,
-                 y: ()=> 2,
+                 y: ()=> 0,
                  z: ()=> 8,
                  duration: 2.5
                 })
 
-                focusCam()
+                state.camera.lookAt(aphelion, 0, -5)
                 
             } else if (meanRadius < 0.0050 && meanRadius > 0.0024  )  {
 
                 gsap.to(camera.position, {
                  x: ()=> aphelion -5,
-                 y: ()=> 0.5,
+                 y: ()=> 0,
                  z: ()=> 5,
                  duration: 2.5
                 })
 
-                focusCam()
+                state.camera.lookAt(aphelion, 0, -3)
 
             } else {
 
                  gsap.to(camera.position, {
                  x: ()=> aphelion -1,
-                 y: ()=> 0.5,
+                 y: ()=> 0,
                  z: ()=> 1,
                  duration: 2.5
                 })
 
-                focusCam()
+                state.camera.lookAt(aphelion, 0, -0.5)
             }
             setIsFocus(false)
         }
