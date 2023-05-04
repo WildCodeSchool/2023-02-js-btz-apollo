@@ -35,7 +35,7 @@ const Scene = () => {
               
               res.data.bodies.forEach(element => {
 
-                if(element.bodyType !== 'Moon' ) {
+                if (element.bodyType !== 'Moon' ) {
                     return
                 }
 
@@ -62,20 +62,19 @@ const Scene = () => {
             <SpinnerDotted color="#424463" />
             </div>
             ) : (
-          <>
+              <>
               {clicked ? (
-          
-           <div className="card-list">
-               {objects &&
-                objects
-                .filter((object) => object.bodyType === 'Planet')
-                .map((planet) => {
-                  return (
-                <Card key={planet.id} 
-                      scenePlanet={planet} 
-                />)
-                })}
-           </div>) : null }
+      <div className="card-list">
+          {objects &&
+           objects
+           .filter((object,index) => object.bodyType === 'Planet' && index === indexObject)
+           .map((planet) => {
+             return (
+           <Card key={planet.id} 
+                 scenePlanet={planet}
+           />)
+           })}
+      </div>) : null }
 
             <Canvas
             shadows
@@ -86,6 +85,7 @@ const Scene = () => {
                 far: 999999999999
               }}
             >
+
             {/* <Camera /> */}
 
               <Stars

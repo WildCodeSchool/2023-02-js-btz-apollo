@@ -10,7 +10,7 @@
     background-color: rgba(54, 54, 54, 0.185);
     border-radius: 8px;
     margin: 0.5em;
-    position: relative;
+    position: absolute;
 }
 
 .container-title {
