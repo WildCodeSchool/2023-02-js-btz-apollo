@@ -45,12 +45,15 @@
 .planet-image {
     width: 100%;
     height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .planet-image > img {
     width:75%;
     object-fit: cover;
-    padding-left: 4em;
+    padding: 4em;
     
 }
 

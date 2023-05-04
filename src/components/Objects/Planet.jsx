@@ -62,7 +62,7 @@ import { Vector3 } from 'three';
                 gsap.to(camera.position, {
                     x:  pos.x -15,
                     y:  0,
-                    z:  pos.z +8,
+                    z:  pos.z +20,
                     duration: gsapDuration,
                     ease: gsapEase
                     })
@@ -73,7 +73,7 @@ import { Vector3 } from 'three';
                 gsap.to(camera.position, {
                  x:  pos.x -5,
                  y:  0,
-                 z: pos.z + 8,
+                 z: pos.z +8,
                  duration: gsapDuration,
                 ease: gsapEase
                 })
