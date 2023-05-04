@@ -1,6 +1,6 @@
 import './Card.css';
 
-const Card = ( {scenePlanet} ) => {
+const Card = ( {scenePlanet, handleClose} ) => {
     
 const moons = scenePlanet.moons;
 
@@ -8,6 +8,7 @@ const moons = scenePlanet.moons;
         <div className='card-container'>
         <div className="cards">
             <div className="container-title">
+                <span onClick={handleClose}>X</span>
                 <h1 className="title">
                     {scenePlanet.englishName}
                 </h1>
