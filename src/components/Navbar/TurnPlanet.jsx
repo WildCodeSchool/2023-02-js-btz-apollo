@@ -14,7 +14,10 @@ const TurnPlanet = ({ model, index, handleSetObject, handleClicked }) => {
     <>
             <primitive
                 ref={modelRef} object={model.scene} scale={0.0015}
-                onClick={handleClicked}
+                onDoubleClick={()=>{
+                    handleSetObject(index)
+                    handleClicked()
+                }}
                 onPointerOver={() => {
                     setHover(true);
                  }}
@@ -22,9 +25,7 @@ const TurnPlanet = ({ model, index, handleSetObject, handleClicked }) => {
                 onPointerOut={() => {
                     setHover(false);
                 }}
-                onDoubleClick={() =>{
-                    handleSetObject(index)
-                }}
+
             />
     </>
   );
