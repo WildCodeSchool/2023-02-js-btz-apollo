@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Stars, OrbitControls } from '@react-three/drei';
+import { Stars, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios';
 import Header from '../components/Header/Header';
@@ -18,13 +18,14 @@ const Scene = () => {
     const [moons, setMoons] = useState({});
 
     const [indexObject, setIndexObject] = useState('')
+    console.log(indexObject);
 
     const handleSetObject = (indexObject) => {
         setIndexObject( indexObject )
     }
 
     const handleClicked = ()=>{
-      setClicked(true)
+      setClicked(!clicked)
     }
     const handleClose = ()=>{
       setClicked( false )
@@ -67,11 +68,11 @@ const Scene = () => {
             </div>
             ) : (
               <>
-              {clicked ? (
-      <div className="card-list">
+              {clicked  ? (
+                <div className="card-list">
           {objects &&
            objects
-           .filter((object,index) => object.bodyType === 'Planet' && index === indexObject)
+           .filter((object,index) => object.bodyType === 'Planet' && index === indexObject || object.bodyType === 'Star' && index === indexObject || object.bodyType === 'Moon' && index === indexObject )
            .map((planet) => {
              return (
            <Card key={planet.id} 
@@ -82,13 +83,16 @@ const Scene = () => {
       </div>) : null }
             <Canvas
             shadows
-              camera={{
-                position: [-70, 70, 70],
-                fov: 45,
-                near: 0.1,
-                far: 999999999999
-              }}
+              camera
             >
+                <PerspectiveCamera makeDefault 
+                                    position={[-70, 70, 70]}
+                                    fov={45}
+                                    near={0.1}
+                                    far={9999999999} />
+
+                <OrbitControls />
+
               <Stars
                 radius={500}
                 depth={50}
@@ -98,8 +102,7 @@ const Scene = () => {
                 fade
                 speed={0}
               />
-              <OrbitControls makeDefault />
-              
+
               <pointLight 
                 intensity={0.5}
                 castShadow
@@ -108,13 +111,12 @@ const Scene = () => {
               {objects &&
                 objects
                   .map((astre, indexAstre) => {
-                     if (astre.bodyType === 'Star') return <Sun key={astre.id} sun={astre} />
+                     if (astre.bodyType === 'Star') return <Sun key={astre.id} sun={astre}  />                                             
                      if (astre.bodyType === 'Planet') return <Planet key={astre.id} 
                                                                      planet={astre} 
                                                                      moons={moons[astre.id]} 
                                                                      indexObject={indexObject} 
-                                                                     indexAstre={indexAstre} 
-                                                                /> 
+                                                                     indexAstre={indexAstre} />
                     return null;
                     })}
             </Canvas>
