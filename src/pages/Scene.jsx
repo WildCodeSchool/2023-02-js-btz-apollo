@@ -89,7 +89,6 @@ const Scene = () => {
                 far: 999999999999
               }}
             >
-
               <Stars
                 radius={500}
                 depth={50}

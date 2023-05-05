@@ -1,7 +1,7 @@
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import Scene from './pages/Scene';
+import store from './assets/Redux/store';
 import Home from './pages/Home'
-import store from './assets/Redux/store'
 import './App.css';
 
 

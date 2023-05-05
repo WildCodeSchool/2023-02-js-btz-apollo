@@ -41,7 +41,7 @@ const Home = () => {
                             <div className='team'>
                                 <span>Apollo crew :</span>
                                 <ul>
-                                    <li>Audrey</li>
+                                    <li>PtBambie</li>
                                     <li>J.L.P</li>
                                     <li>PeePooDoo</li>
                                     <li>Fennec-Tourmenté</li>
