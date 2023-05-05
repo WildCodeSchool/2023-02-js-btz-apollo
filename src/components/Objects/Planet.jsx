@@ -1,4 +1,4 @@
-import { Clone, Torus, useGLTF, Center, OrbitControls } from '@react-three/drei'
+import { Clone, Torus, useGLTF, Center, Sparkles } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import Moon from './Moon';
@@ -13,7 +13,7 @@ import { Vector3 } from 'three';
     sideralRotation /= 100000; //in hours in API => to convert
     meanRadius /= 10000000;
     aphelion /= 10000000;
-    
+
     const planetModel = useGLTF(planet.model3d);
     const earthOrbit = 365.256;
     const planetRef = useRef()
@@ -106,7 +106,7 @@ import { Vector3 } from 'three';
                 rotation={[0, 0 ,-radianAxialTilt]}
                 castShadow
                 onMouseDown={()=>{
-                
+                    
                 }}
             >
             </Clone>
@@ -116,8 +116,11 @@ import { Vector3 } from 'three';
                     args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
                     rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
                     material-color = {color}
-                    visible={isFocus}
-                />
+                    visible={!isFocus}
+                >
+
+                </Torus>
+                
 
                 {moons &&
                 moons

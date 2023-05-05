@@ -89,14 +89,15 @@ const Scene = () => {
                                     position={[-70, 70, 70]}
                                     fov={45}
                                     near={0.1}
-                                    far={9999999999} />
+                                    far={6000} />
+
 
                 <OrbitControls />
 
               <Stars
                 radius={500}
-                depth={50}
-                count={5000}
+                depth={500}
+                count={15000}
                 factor={20}
                 saturation={1}
                 fade
