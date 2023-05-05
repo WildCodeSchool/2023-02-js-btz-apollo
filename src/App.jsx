@@ -4,14 +4,13 @@ import store from './assets/Redux/store';
 import Home from './pages/Home'
 import './App.css';
 
-
 function App() {    
     return (
         <Provider store={store}>
-        <div className='app'>
-        <Home />
-        <Scene />
-        </div>
+            <div className='app'>
+                <Home />
+                <Scene />
+            </div>
         </Provider>
     );
 }
