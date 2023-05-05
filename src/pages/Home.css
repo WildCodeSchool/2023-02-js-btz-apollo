@@ -8,7 +8,9 @@
 
 .welcome-container{
     width: 80%;
-    height: auto;
+    height: 80%;
+    padding-left: 3em;
+    padding-right: 3em;
     background-color: rgba(129, 129, 129, 0.861);
     border-radius: 10px;
     z-index: 1;
@@ -36,9 +38,11 @@
 
 .main-text-container{
     width:90%;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    line-height: 2.5em;
 }
 
 .main-text-container > p {
