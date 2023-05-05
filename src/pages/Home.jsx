@@ -43,7 +43,6 @@ const Home = () => {
                                     <li>PtBambie</li>
                                     <li>J.L.P</li>
                                     <li>PeePooDoo</li>
-                                    <li>CopyKats</li>
                                     <li>Fennec-Tourmenté</li>
                                 </ul>
                             </div>
