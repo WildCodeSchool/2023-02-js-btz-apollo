@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { Stars, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios';
-import Header from '../components/Header/Header'
+import Header from '../components/Header/Header';
 import Card from '../components/Card/Card';
 import Navbar from '../components/Navbar/Navbar';
 import Sun from '../components/Objects/Sun';
@@ -81,7 +81,6 @@ const Scene = () => {
            />)
            })}
       </div>) : null }
-
             <Canvas
             shadows
               camera

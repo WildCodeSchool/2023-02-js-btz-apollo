@@ -22,9 +22,7 @@ justify-content: space-between;
 }
 
 .canvas {
-
-    position: absolute;
-    
+    position: absolute;  
 }
 .capybara {
     width: 4em;
