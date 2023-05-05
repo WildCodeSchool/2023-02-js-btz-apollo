@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Aplogo from '../assets/images/logo-apollo.png';
 import { toggleOpen } from '../assets/Redux/store';
@@ -16,7 +15,7 @@ const Home = () => {
         <>
             {isOpen ? (
                 <div className='home-container'>
-                    <div className='card-container'>
+                    <div className='welcome-container'>
                         <span
                             className='exit'
                             onClick={homeClosing}
@@ -44,6 +43,7 @@ const Home = () => {
                                     <li>PtBambie</li>
                                     <li>J.L.P</li>
                                     <li>PeePooDoo</li>
+                                    <li>CopyKats</li>
                                     <li>Fennec-Tourmenté</li>
                                 </ul>
                             </div>
