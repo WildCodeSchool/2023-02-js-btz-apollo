@@ -83,14 +83,13 @@ const Scene = () => {
       </div>) : null }
             <Canvas
             shadows
-              camera
+
             >
                 <PerspectiveCamera makeDefault 
                                     position={[-70, 70, 70]}
                                     fov={45}
                                     near={0.1}
                                     far={6000} />
-
 
                 <OrbitControls />
 

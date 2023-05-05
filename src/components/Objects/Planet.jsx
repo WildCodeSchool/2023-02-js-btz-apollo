@@ -1,4 +1,4 @@
-import { Clone, Torus, useGLTF, Center, Sparkles } from '@react-three/drei'
+import { Clone, Torus, useGLTF, Center } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import Moon from './Moon';
@@ -6,7 +6,7 @@ import {gsap} from 'gsap';
 import './Planet.css'
 import { Vector3 } from 'three';
 
-    const Planet = ({planet, moons, indexObject, indexAstre}) => {
+const Planet = ({planet, moons, indexObject, indexAstre}) => {
 
     let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
     
@@ -105,27 +105,21 @@ import { Vector3 } from 'three';
                 position={ [aphelion, 0 ,0] }
                 rotation={[0, 0 ,-radianAxialTilt]}
                 castShadow
-                onMouseDown={()=>{
-                    
-                }}
             >
             </Clone>
 
                 <Torus
                     ref={torusRef}
-                    args={[aphelion,0.01,30,200, (Math.PI * 2 )-0.3]}
-                    rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.45]}
+                    args={[aphelion,0.02,30,200, (Math.PI * 2 )-1]}
+                    rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.95]}
                     material-color = {color}
-                    visible={!isFocus}
-                >
-
-                </Torus>
+                />
                 
 
                 {moons &&
                 moons
                 .map((moon)=>(
-                    <Center key={moon.id}  position={[aphelion + moon.aphelion /150000, 0 ,0]}>
+                    <Center key={moon.id}  position={[aphelion + moon.aphelion / 200000 , 0 ,0]}>
                         <Moon moon = {moon} />
                     </Center>
                     ))
