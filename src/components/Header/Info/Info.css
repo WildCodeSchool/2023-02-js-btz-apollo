@@ -1,9 +1,10 @@
 .info-container {
-    width:10%
+    width:10%;
+
 }
 
 img {
     width: 100%;
     object-fit: cover;
-
+    cursor: pointer;
 }

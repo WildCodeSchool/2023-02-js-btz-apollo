@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei';
 import TurnPlanet from '../TurnPlanet';
 import './NavbarItem.css';
 
-const NavbarItem = ({ navPlanet }) => {
+const NavbarItem = ({ navPlanet, index, handleSetObject, handleClicked }) => {
 
     const { model3d } = navPlanet;
     const model = useGLTF(model3d);
@@ -27,7 +27,7 @@ const NavbarItem = ({ navPlanet }) => {
             >
                 <Canvas camera={{ fov: 40 }}>
                     <pointLight position={[-5, 0, 5]} intensity={1} />
-                    <TurnPlanet model={model} />
+                    <TurnPlanet model={model} index={index} handleSetObject={handleSetObject} handleClicked = {handleClicked} />
                 </Canvas>
             </div>
             <div className={`planet${name ? '-name' : ''}`}>

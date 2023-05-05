@@ -1,12 +1,14 @@
 import './Card.css';
 
-const Card = ( {scenePlanet} ) => {
+const Card = ( {scenePlanet, handleClose} ) => {
     
 const moons = scenePlanet.moons;
 
     return (
+        <div className='card-container'>
         <div className="cards">
             <div className="container-title">
+                <span onClick={handleClose}>X</span>
                 <h1 className="title">
                     {scenePlanet.englishName}
                 </h1>
@@ -37,6 +39,7 @@ const moons = scenePlanet.moons;
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

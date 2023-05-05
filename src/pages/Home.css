@@ -1,0 +1,83 @@
+.home-container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-container{
+    width: 80%;
+    height: 80%;
+    padding-left: 3em;
+    padding-right: 3em;
+    background-color: rgba(129, 129, 129, 0.861);
+    border-radius: 10px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: black;
+    position: relative;
+}
+
+.exit {
+    position: absolute;
+    top: 0.2em;
+    right: 0.6em;
+    font-size: 2em;
+    cursor: pointer;
+
+}
+
+.card-container > h1 {
+    height: auto;
+   padding-top: 0.5em;
+    font-size: 3em;
+}
+
+.main-text-container{
+    width:90%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    line-height: 2.5em;
+}
+
+.main-text-container > p {
+    font-size: 1.5em;
+    line-height: 1.5em;
+
+}
+
+.logo-container {
+    user-select:none ;
+}
+.home-footer {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.team {
+    width:70%;
+    padding-left: 3em;
+    display: flex;
+    font-weight: 600;
+    gap: 1em;
+    
+}
+
+.home-footer > span {
+    padding-left: 2em;
+}
+
+.team > ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
