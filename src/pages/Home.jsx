@@ -1,14 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Aplogo from '../assets/images/logo-apollo.png';
-import { toggleOpen } from '../assets/Redux/store';
+import { toggleOpenHome } from '../assets/Redux/store';
 import './Home.css';
 
 const Home = () => {
-    const isOpen = useSelector((state) => state.home.isOpen);
+    const isOpen = useSelector((state) => (state.home.isOpen));
+    
     const dispatch = useDispatch();
   
     const homeClosing = () => {
-        dispatch(toggleOpen());
+        dispatch(toggleOpenHome());
     };
 
     return (

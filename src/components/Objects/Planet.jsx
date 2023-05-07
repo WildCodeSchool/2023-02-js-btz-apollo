@@ -1,41 +1,38 @@
 import { Clone, Torus, useGLTF, Center, CameraControls } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber';
-import { useEffect, useRef, useState } from 'react';
-import Moon from './Moon';
-import {gsap} from 'gsap';
-import './Planet.css'
+import { useRef, useState } from 'react';
 import { Vector3 } from 'three';
+import Moon from './Moon';
+import './Planet.css'
 
-const Planet = ({planet, moons, indexObject, indexAstre}) => {
+const Planet = ({planet, moons, indexObject, indexAstre, handleClicked}) => {
 
     let { meanRadius, aphelion, sideralRotation, axialTilt, sideralOrbit } = planet //let because we modify some value for scale
     
     sideralRotation /= 100000; //in hours in API => to convert
     meanRadius /= 10000000;
     aphelion /= 10000000;
+    
+    //conversion des angles de degres (API) vers radians (ThreeJS)
+    const radianAxialTilt = (axialTilt * Math.PI) / 180
 
     const planetModel = useGLTF(planet.model3d);
     const earthOrbit = 365.256;
     const planetRef = useRef()
     const turnArroundSun = useRef()
     const torusRef = useRef()
-    const { camera } = useThree()
-
-    const [isFocus, setIsFocus] = useState(false)
+    const controls=useRef()
 
     let color = 'white';
     let position = 0
     let planetPosition = new Vector3();
     let pos = {}
 
-    //conversion des angles de degres (API) vers radians (ThreeJS)
-    const radianAxialTilt = (axialTilt * Math.PI) / 180
 
    { indexAstre === indexObject ? color = 'white' : color = 'dimgray'}
 
-    const controls=useRef()
 
-   useFrame((state, delta)=>{
+    useFrame((state, delta)=>{
        position = (planetRef.current.children[0].geometry.getAttribute( 'position' ));
        planetPosition.fromBufferAttribute( position );
        pos = planetRef.current.children[0].getWorldPosition(planetPosition)
@@ -44,9 +41,10 @@ const Planet = ({planet, moons, indexObject, indexAstre}) => {
         turnArroundSun.current.rotation.y += (earthOrbit / sideralOrbit) / 1000; //rotation de la planete autour du soleil
         
         if (indexAstre === indexObject){
-            
             controls.current.moveTo( pos.x , pos.y , pos.z )
             controls.current.update(delta)
+
+            handleClicked(true)
 
     }
    })

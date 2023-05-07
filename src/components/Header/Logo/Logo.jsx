@@ -1,7 +1,6 @@
 import { forwardRef, useRef, useState } from 'react';
 import Aplogo from '../../../assets/images/logo-apollo-blc.png';
 import './Logo.css';
-import { CameraControls } from '@react-three/drei';
 
 
 

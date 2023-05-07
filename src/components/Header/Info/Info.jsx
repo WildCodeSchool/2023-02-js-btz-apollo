@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleOpen } from '../../../assets/Redux/store';
+import { toggleOpenHome } from '../../../assets/Redux/store';
 import Inflogo from '../../../assets/images/icone-info.png';
 import './Info.css';
 
@@ -9,7 +9,7 @@ const Info = () => {
   const isOpen = useSelector(state => state.home.isOpen);
 
   const handleInfoClick = () => {
-    dispatch(toggleOpen());
+    dispatch(toggleOpenHome());
   };
 
   return (

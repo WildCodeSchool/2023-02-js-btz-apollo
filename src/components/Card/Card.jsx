@@ -1,14 +1,26 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleOpenCard } from '../../assets/Redux/store';
 import './Card.css';
 
-const Card = ( {scenePlanet, handleClose} ) => {
+const Card = ( { scenePlanet } ) => {
+
+    const isOpenCard = useSelector((state) => state.card.isOpen);
+    const dispatchCard = useDispatch();
+  
+    const handleCardClick = () => {
+        dispatchCard(toggleOpenCard());
+    };
     
 const moons = scenePlanet.moons;
 
     return (
+
+        <>
+        {isOpenCard ? (
         <div className='card-container'>
         <div className="cards">
             <div className="container-title">
-                <span onClick={handleClose}>X</span>
+                <span onClick={handleCardClick}>X</span>
                 <h1 className="title">
                     {scenePlanet.englishName}
                 </h1>
@@ -41,6 +53,8 @@ const moons = scenePlanet.moons;
             </div>
         </div>
         </div>
+        ) : null }
+    </>
     );
 };
 

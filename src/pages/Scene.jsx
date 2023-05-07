@@ -23,12 +23,12 @@ const Scene = () => {
         setIndexObject( indexObject )
     }
 
-    const handleClicked = ()=>{
-      setClicked(!clicked)
+    const handleClicked = (value) =>{
+      setClicked(value)
     }
-    
+
     const handleClose = ()=>{
-      setClicked( false )
+      setClicked(false)
     }
 
     useEffect(() => {
@@ -114,7 +114,8 @@ const Scene = () => {
                                                                      planet={astre} 
                                                                      moons={moons[astre.id]} 
                                                                      indexObject={indexObject} 
-                                                                     indexAstre={indexAstre} />
+                                                                     indexAstre={indexAstre}
+                                                                     handleClicked={handleClicked} />
                     return null;
                     })}
             </Canvas>

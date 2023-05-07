@@ -6,17 +6,33 @@ const homeSlice = createSlice({
     isOpen: true
   },
   reducers: {
-    toggleOpen: (state) => {
+    toggleOpenHome: (state) => {
       state.isOpen = !state.isOpen;
     }
   }
 });
 
-export const { toggleOpen } = homeSlice.actions;
+const cardSlice = createSlice({
+  name: 'card',
+  initialState: {
+    isOpen: false
+  },
+  reducers: {
+    toggleOpenCard: (state) => {
+      state.isOpen = !state.isOpen;
+    }
+  }
+});
+
+
+
+export const { toggleOpenHome } = homeSlice.actions;
+export const { toggleOpenCard } = cardSlice.actions;
 
 const store = configureStore({
   reducer: {
-    home: homeSlice.reducer
+    home: homeSlice.reducer,
+    card: cardSlice.reducer
   }
 });
 
