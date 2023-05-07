@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Stars, OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { Stars, PerspectiveCamera } from '@react-three/drei';
 import { SpinnerDotted } from 'spinners-react';
 import axios from 'axios';
 import Header from '../components/Header/Header';
@@ -18,7 +18,6 @@ const Scene = () => {
     const [moons, setMoons] = useState({});
 
     const [indexObject, setIndexObject] = useState('')
-    console.log(indexObject);
 
     const handleSetObject = (indexObject) => {
         setIndexObject( indexObject )
@@ -27,6 +26,7 @@ const Scene = () => {
     const handleClicked = ()=>{
       setClicked(!clicked)
     }
+    
     const handleClose = ()=>{
       setClicked( false )
     }
@@ -90,8 +90,6 @@ const Scene = () => {
                                     fov={45}
                                     near={0.1}
                                     far={6000} />
-
-                <OrbitControls />
 
               <Stars
                 radius={500}
