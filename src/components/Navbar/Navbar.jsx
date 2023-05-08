@@ -23,7 +23,7 @@ const Navbar = ({handleSetObject, handleClicked}) => {
                                         navPlanet={planet} 
                                         index={index} 
                                         handleSetObject={handleSetObject}
-                                        handleClicked={handleClicked} />)}
+                                        handleClicked={handleClicked}/>)}
         </div>
     );
 };

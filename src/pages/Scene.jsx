@@ -16,7 +16,6 @@ const Scene = () => {
     const [clicked,setClicked] = useState (false)
     const [isLoading, setIsLoading] = useState(true);
     const [moons, setMoons] = useState({});
-
     const [indexObject, setIndexObject] = useState('')
 
     const handleSetObject = (indexObject) => {
@@ -115,7 +114,7 @@ const Scene = () => {
                                                                      moons={moons[astre.id]} 
                                                                      indexObject={indexObject} 
                                                                      indexAstre={indexAstre}
-                                                                     handleClicked={handleClicked} />
+                                                                     handleClicked={handleClicked}/>
                     return null;
                     })}
             </Canvas>
@@ -123,7 +122,7 @@ const Scene = () => {
               )}
         </div>
         <Navbar handleSetObject={handleSetObject}
-                handleClicked={handleClicked}/>
+                handleClicked={handleClicked} />
       </div>
     );
   };

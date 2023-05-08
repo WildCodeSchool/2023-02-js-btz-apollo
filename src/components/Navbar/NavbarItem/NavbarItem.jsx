@@ -27,7 +27,7 @@ const NavbarItem = ({ navPlanet, index, handleSetObject, handleClicked }) => {
             >
                 <Canvas camera={{ fov: 40 }}>
                     <pointLight position={[-5, 0, 5]} intensity={1} />
-                    <TurnPlanet model={model} index={index} handleSetObject={handleSetObject} handleClicked = {handleClicked} />
+                    <TurnPlanet model={model} index={index} handleSetObject={handleSetObject} handleClicked = {handleClicked}/>
                 </Canvas>
             </div>
             <div className={`planet${name ? '-name' : ''}`}>

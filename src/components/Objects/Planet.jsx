@@ -1,6 +1,6 @@
 import { Clone, Torus, useGLTF, Center, CameraControls } from '@react-three/drei'
-import { useFrame, useThree } from '@react-three/fiber';
-import { useRef, useState } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { useEffect, useRef } from 'react';
 import { Vector3 } from 'three';
 import Moon from './Moon';
 import './Planet.css'
@@ -23,6 +23,8 @@ const Planet = ({planet, moons, indexObject, indexAstre, handleClicked}) => {
     const torusRef = useRef()
     const controls=useRef()
 
+    const paddingValue = meanRadius * 1000;
+
     let color = 'white';
     let position = 0
     let planetPosition = new Vector3();
@@ -30,6 +32,22 @@ const Planet = ({planet, moons, indexObject, indexAstre, handleClicked}) => {
 
 
    { indexAstre === indexObject ? color = 'white' : color = 'dimgray'}
+
+   useEffect(()=>{
+        position = (planetRef.current.children[0].geometry.getAttribute( 'position' ));
+        planetPosition.fromBufferAttribute( position );
+        pos = planetRef.current.children[0].getWorldPosition(planetPosition)
+
+        if (indexAstre === indexObject){
+
+            controls.current.fitToBox(planetModel.scene, true ,{paddingTop : paddingValue, paddingLeft : paddingValue, paddingBottom : paddingValue, paddingRight : paddingValue} )
+            controls.current.update()
+
+         handleClicked(true)
+
+    }
+
+   })
 
 
     useFrame((state, delta)=>{
@@ -43,9 +61,6 @@ const Planet = ({planet, moons, indexObject, indexAstre, handleClicked}) => {
         if (indexAstre === indexObject){
             controls.current.moveTo( pos.x , pos.y , pos.z )
             controls.current.update(delta)
-
-            handleClicked(true)
-
     }
    })
 
@@ -53,7 +68,7 @@ const Planet = ({planet, moons, indexObject, indexAstre, handleClicked}) => {
     <>
         <mesh ref={turnArroundSun}>
 
-            <CameraControls makeDefault ref={controls} />
+            <CameraControls makeDefault ref={controls} smoothTime={0.9}/>
 
             <Clone
                 ref={planetRef}
@@ -65,12 +80,12 @@ const Planet = ({planet, moons, indexObject, indexAstre, handleClicked}) => {
             >
             </Clone>
 
-                {/* <Torus
+                <Torus
                     ref={torusRef}
                     args={[aphelion,0.02,30,200, (Math.PI * 2 )-1]}
                     rotation={[- Math.PI / 2, 0, (Math.PI / 2)-Math.PI / 2.95]}
                     material-color = {color}
-                /> */}
+                />
                 
 
                 {moons &&
